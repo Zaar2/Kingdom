@@ -13,6 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ru.zaar2.kingdom.R;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 public class MainActivity extends AppCompatActivity {
 
     Button newGame;
@@ -38,6 +42,18 @@ public class MainActivity extends AppCompatActivity {
         btn_rulesGame_onClick();
 //        btn_goIn_onClick();
         btn_back_onClick();
+
+        startMobileAds();
+    }
+
+    private void startMobileAds(){
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
     }
 
     @Override
