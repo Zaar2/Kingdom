@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="event_fire">0</string>
+    <string name="event_rats">1</string>
+    <string name="event_migratory">2</string>
+    <string name="event_victory_over_rebellion">3</string>
+    <string name="event_epidemic">4</string>
+    <string name="event_demographic_explosion">5</string>
+    <string name="event_diversion">6</string>
+    <string name="event_personCanHandle_increased">7</string>
+    <string name="event_personCanHandle_decline">8</string>
+    <string name="event_land_depletion">9</string>
+    <string name="event_improved_yields">10</string>
+    <string name="event_plunder">11</string>
+    <string name="event_aggressor">12</string>
+    <string name="event_win_in_war">13</string>
+    <string name="event_defeat_in_war">14</string>
+    <string name="event_defeat_dueTo_hunger">15</string>
+    <string name="event_defeat_dueTo_rebellion">16</string>
+    <string name="event_defeat_dueTo_starvation">17</string>
+    <string name="event_defeat_in_raid">18</string>
+    <string name="event_victory_in_raid">19</string>
+    <string name="instruction">20</string>
+
+    <array name="events">
+        <item>@string/event_fire</item>
+        <item>@string/event_rats</item>
+        <item>@string/event_migratory</item>
+        <item>@string/event_victory_over_rebellion</item>
+        <item>@string/event_epidemic</item>
+        <item>@string/event_demographic_explosion</item>
+        <item>@string/event_diversion</item>
+        <item>@string/event_personCanHandle_increased</item>
+        <item>@string/event_personCanHandle_decline</item>
+        <item>@string/event_land_depletion</item>
+        <item>@string/event_improved_yields</item>
+        <item>@string/event_plunder</item>
+        <item>@string/event_aggressor</item>
+        <item>@string/event_win_in_war</item>
+        <item>@string/event_defeat_in_war</item>
+        <item>@string/event_defeat_dueTo_hunger</item>
+        <item>@string/event_defeat_dueTo_rebellion</item>
+        <item>@string/event_defeat_dueTo_starvation</item>
+        <item>@string/event_defeat_in_raid</item>
+        <item>@string/event_victory_in_raid</item>
+    </array>
+</resources>

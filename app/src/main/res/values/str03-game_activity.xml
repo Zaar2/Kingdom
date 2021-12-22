@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="btn_indicatorsAndStatistics"><u>Текущие показатели</u></string>
+    <string name="btn_changeableParameters"><u>Параметры</u></string>
+    <string name="btn_currentOfTime">Течение времени</string>
+    
+    <string name="nameTextViewOfResources_population">Население</string>
+    <string name="nameTextViewOfResources_budget">Запас зерна</string>
+    <string name="nameTextViewOfResources_acreage">Площадь</string>
+    <string name="btn_move">ДАЛЕЕ!!</string>
+
+    <string name="text_thousandOfPeople">\u0020чел.</string>
+    <string name="text_mill.ofMoney">\u0020пуд.</string>
+    <string name="text_acreOfAcreage">\u0020десятин</string>
+    <string name="text_yearOfManagement">Год правления:\u0020</string>
+    <string name="text_divider">\u0020-\u0020</string>
+    <string name="text_defaultValue">9 999 999</string>
+    <string name="text_defaultYear">1</string>
+
+</resources>

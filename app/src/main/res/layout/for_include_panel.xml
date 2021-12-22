@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+    android:id="@+id/linearLayout_panelOfIndicators"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+    <include layout="@layout/for_include_group_of_panel"
+        android:id="@+id/group_of_panel_people"
+        />
+    <include layout="@layout/for_include_group_of_panel"
+        android:id="@+id/group_of_panel_grain"
+        />
+    <include layout="@layout/for_include_group_of_panel"
+        android:id="@+id/group_of_panel_land"
+        />
+    <include layout="@layout/for_include_group_of_panel"
+        android:id="@+id/group_of_panel_warriors"
+        />
+    <include layout="@layout/for_include_group_of_panel"
+        android:id="@+id/group_of_panel_aggressor"
+        />
+    <include layout="@layout/for_include_group_of_panel"
+        android:id="@+id/group_of_panel_messages"
+        />
+</LinearLayout>

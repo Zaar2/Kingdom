@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_database">graph.db</string>
+
+<!--    nameTables-->
+    <string name="strDB_changeableParameters">changeableParameters</string>
+    <string name="strDB_indicators">indicators</string>
+    <string name="strDB_resources">resources</string>
+    <string name="strDB_accessory">accessory</string>
+
+<!--    ROWS_and_DEFAULT_VALUES_TABLE_accessory-->
+<!--    <string name="strDB_average_incomes_people_previously_accessory">average_incomes_people_previously</string>-->
+    <string name="strDB_currently_question_accessory">currently_question_accessory</string>
+    <string name="strDB_sown_land_accessory">sown_land_accessory</string>
+    <string name="strDB_accumulation_saboteur_accessory">accumulation_saboteur_accessory</string>
+    <string name="strDB_accumulation_land_productivity_accessory">accumulation_land_productivity_accessory</string>
+    <string name="strDB_grain_per_citizen_accessory">grain_per_citizen_accessory</string>
+    <string name="strDB_dead_epidemic_accessory">dead_epidemic_accessory</string>
+    <string name="strDB_dead_in_battles_accessory">dead_in_battles_accessory</string>
+    <string name="strDB_dead_in_fire_accessory">dead_in_fire_accessory</string>
+    <string name="strDB_dead_in_rebellion_accessory">dead_in_rebellion_accessory</string>
+    <string name="strDB_dead_in_starvation_accessory">dead_in_starvation_accessory</string>
+    <string name="strDB_born_accessory">born_accessory</string>
+    <string name="strDB_grain_burnt_down_accessory">grain_burnt_down_accessory</string>
+    <string name="strDB_plunder_grain_accessory">plunder_grain_accessory</string>
+    <string name="strDB_loss_grain_in_diversion_accessory">loss_grain_in_diversion_accessory</string>
+    <string name="strDB_raid_capture_land_accessory">raid_capture_land_accessory</string>
+    <string name="strDB_raid_capture_grain_accessory">raid_capture_grain_accessory</string>
+    <string name="strDB_raid_capture_people_accessory">raid_capture_people_accessory</string>
+    <string name="strDB_raid_dead_accessory">raid_dead_accessory</string>
+    <string name="strDB_raid_year_of_return_accessory">raid_year_of_return_accessory</string>
+
+<!--    ROWS_and_DEFAULT_VALUES_TABLE_resources-->
+    <string name="strDB_population_resources">population_resources</string>
+    <string name="strDB_budget_resources">budget_resources</string>
+    <string name="strDB_years_resources">years_resources</string>
+    <string name="strDB_acreage_resources">acreage_resources</string>
+
+<!--    ROWS_and_DEFAULT_VALUES_TABLE_indicators-->
+    <string name="strDB_increaseInPopulation_indicator">increaseInPopulation_indicator</string>
+    <string name="strDB_mortality_indicator">mortality_indicator</string>
+    <string name="strDB_migratoryIncreaseInPopulation_indicator">migratoryIncreaseInPopulation_indicator</string>
+    <string name="strDB_landInOwnership_indicator">landInOwnership_indicator</string>
+    <string name="strDB_cropYields_indicator">cropYields_indicator</string>
+    <string name="strDB_grainReserve_indicator">grainReserve_indicator</string>
+    <string name="strDB_landValue_indicator">landValue_indicator</string>
+    <string name="strDB_personCanHandle_indicator">personCanHandle_indicator</string>
+    <string name="strDB_army_indicator">army_indicator</string>
+    <string name="strDB_warriors_in_a_Raid_indicator">warriors_in_a_Raid_indicator</string>
+    <string name="strDB_unemployed_person_indicator">unemployed_person_indicator</string>
+    <string name="strDB_grainLoss_indicator">grain_loss_indicator</string>
+    <string name="strDB_aggressor_indicator">aggressor_indicator</string>
+    <string name="strDB_distance_to_indicator">distance_to_indicator</string>
+
+    <!--    ROWS_and_DEFAULT_VALUES_TABLE_changeableParameters-->
+    <string name="str_human_tax">human_tax</string>
+    <string name="str_agriculture_tax">agriculture_tax</string>
+    <string name="str_trade_tax">trade_tax</string>
+    <string name="str_industry_tax">industry_tax</string>
+    <string name="str_management_style">management_style</string>
+    <string name="str_agriculture_expense">agriculture_expense</string>
+    <string name="str_industry_expense">industry_expense</string>
+    <string name="str_trade_expense">trade_expense</string>
+    <string name="str_socialPrograms_expense">socialPrograms_expense</string>
+    <string name="str_army_expense">army_expense</string>
+
+
+    <string-array name="names_indicators">
+        <item>@string/strDB_increaseInPopulation_indicator</item>
+        <item>@string/strDB_mortality_indicator</item>
+        <item>@string/strDB_migratoryIncreaseInPopulation_indicator</item>
+        <item>@string/strDB_landInOwnership_indicator</item>
+        <item>@string/strDB_cropYields_indicator</item>
+        <item>@string/strDB_grainReserve_indicator</item>
+        <item>@string/strDB_landValue_indicator</item>
+        <item>@string/strDB_personCanHandle_indicator</item>
+        <item>@string/strDB_army_indicator</item>
+        <item>@string/strDB_warriors_in_a_Raid_indicator</item>
+        <item>@string/strDB_unemployed_person_indicator</item>
+        <item>@string/strDB_grainLoss_indicator</item>
+        <item>@string/strDB_aggressor_indicator</item>
+        <item>@string/strDB_distance_to_indicator</item>
+    </string-array>
+
+    <string-array name="names_parameters_expense">
+        <item>@string/str_agriculture_expense</item>
+        <item>@string/str_industry_expense</item>
+        <item>@string/str_trade_expense</item>
+        <item>@string/str_socialPrograms_expense</item>
+        <item>@string/str_army_expense</item>
+    </string-array>
+
+    <string-array name="names_accessory">
+<!--        <item>@string/strDB_average_incomes_people_previously_accessory</item>-->
+        <item>@string/strDB_currently_question_accessory</item>
+        <item>@string/strDB_sown_land_accessory</item>
+        <item>@string/strDB_accumulation_saboteur_accessory</item>
+        <item>@string/strDB_accumulation_land_productivity_accessory</item>
+        <item>@string/strDB_grain_per_citizen_accessory</item>
+        <item>@string/strDB_dead_in_battles_accessory</item>
+        <item>@string/strDB_born_accessory</item>
+        <item>@string/strDB_dead_epidemic_accessory</item>
+        <item>@string/strDB_dead_in_fire_accessory</item>
+        <item>@string/strDB_grain_burnt_down_accessory</item>
+        <item>@string/strDB_plunder_grain_accessory</item>
+        <item>@string/strDB_loss_grain_in_diversion_accessory</item>
+        <item>@string/strDB_dead_in_rebellion_accessory</item>
+    </string-array>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="btn_goIn">Понеслась!</string>
+    <string name="btn_back">Взад давай!</string>
+    <string name="btn_newGame">Играем заново</string>
+    <string name="btn_continueGame">Продолжить</string>
+    <string name="btn_setup">Настройка</string>
+    <string name="btn_rules">Правила</string>
+
+    <string name="rulesText">
+        Ваша задача продержаться у власти как можно больше времени.
+    </string>
+
+</resources>

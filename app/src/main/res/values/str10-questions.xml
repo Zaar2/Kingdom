@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="name_question1">Сколько купим земли?</string>
+    <string name="name_question2">Сколько продадим земли?</string>
+    <string name="name_question3">Сколько человек определим в городовой полк?</string>
+    <string name="name_question4">Сколько зерна определим каждому горожанину для прокорма на год?</string>
+    <string name="name_question5">Сколько земли засеем?</string>
+    <string name="name_question6">Сколько пошлем в набег?</string>
+
+    <string name="text_question1">...</string>
+    <string name="text_question2">...</string>
+    <string name="text_question3">Если при попытке захвата Вашего города, защитников в городовом полке будет меньше
+        чем нападающих, город наверняка не устоит.\nКаждому воину, нужно будет выделить некоторое количество зерна.</string>
+    <string name="text_question4">Что бы население не голодало, нужно не менее 22 пудов зерна
+        для 1 человека, на год.</string>
+    <string name="text_question5">Максимальная площадь посевных ограничена объемом зерна для засева
+        (0,5 пуда на 1 десятину), производительностью работников и общим размером земли в собственности.</string>
+    <string name="text_question6">Для обеспечения воинов продовольствием, нужно 5 пудов для 1 воина,
+        на весь поход.</string>
+
+    <string-array name="questions_arr">
+        <item>@string/name_question1</item>
+        <item>@string/name_question2</item>
+        <item>@string/name_question3</item>
+        <item>@string/name_question4</item>
+        <item>@string/name_question5</item>
+        <item>@string/name_question6</item>
+    </string-array>
+    <string-array name="text_questions_arr">
+        <item>@string/text_question1</item>
+        <item>@string/text_question2</item>
+        <item>@string/text_question3</item>
+        <item>@string/text_question4</item>
+        <item>@string/text_question5</item>
+        <item>@string/text_question6</item>
+    </string-array>
+
+</resources>

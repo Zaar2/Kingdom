@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    >
+    <LinearLayout
+android:id="@+id/panelGroup_linLayout_01"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:visibility="gone"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/_______________"
+    android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+    style="@style/font_Panel"
+    />
+<TextView
+    android:id="@+id/panelGroup_tv_01"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/font_Panel"
+    android:text="@string/text_default_value_peoples"
+    android:gravity="end"
+    />
+</LinearLayout>
+    <LinearLayout
+android:id="@+id/panelGroup_linLayout_02"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:visibility="gone"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/_______________"
+    android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+    style="@style/font_Panel"
+    />
+<TextView
+    android:id="@+id/panelGroup_tv_02"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/font_Panel"
+    android:text="@string/text_default_value_corruption"
+    android:gravity="end"
+    />
+</LinearLayout>
+    <LinearLayout
+android:id="@+id/panelGroup_linLayout_03"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:visibility="gone"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/_______________"
+    android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+    style="@style/font_Panel"
+    />
+<TextView
+    android:id="@+id/panelGroup_tv_03"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/font_Panel"
+    android:text="@string/text_default_value_money"
+    android:gravity="end"
+    />
+</LinearLayout>
+    <LinearLayout
+    android:id="@+id/panelGroup_LinLayout_04"
+    android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:visibility="gone"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/_______________"
+    android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+    style="@style/font_Panel"
+    />
+
+<TextView
+    android:id="@+id/panelGroup_tv_04"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAllCaps="false"
+    style="@style/font_Panel"
+    android:text="@string/text_defaultValue"
+    android:gravity="end"
+    />
+</LinearLayout>
+    <LinearLayout
+android:id="@+id/panelGroup_linLayout_05"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:visibility="gone"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/_______________"
+    android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+    style="@style/font_Panel"
+    />
+<TextView
+    android:id="@+id/panelGroup_tv_05"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/font_Panel"
+    android:text="@string/text_default_value_averageIncomes"
+    android:gravity="end"
+    />
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/panelGroup_linLayout_06"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_______________"
+            android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+            style="@style/font_Panel"
+            />
+        <TextView
+            android:id="@+id/panelGroup_tv_06"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/font_Panel"
+            android:text="@string/text_default_value_averageIncomes"
+            android:gravity="end"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/panelGroup_linLayout_07"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_______________"
+            android:layout_marginEnd="@dimen/margin_in_frame_of_statistics"
+            style="@style/font_Panel"
+            />
+        <TextView
+            android:id="@+id/panelGroup_tv_07"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/font_Panel"
+            android:text="@string/text_default_value_averageIncomes"
+            android:gravity="end"
+            />
+    </LinearLayout>
+    <include
+        layout="@layout/divider2"
+        android:id="@+id/panelGroup_divider"
+        android:visibility="gone"
+    />
+</LinearLayout>

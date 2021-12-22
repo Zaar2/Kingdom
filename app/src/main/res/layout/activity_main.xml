@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ru.zaar2.kingdom.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_ver2"
+    >
+
+    <ImageView
+        android:id="@+id/image_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@drawable/main"
+        android:adjustViewBounds="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:id="@+id/linearLay_rules"
+        app:layout_constraintTop_toBottomOf="@+id/image_main"
+
+        >
+        <TextView
+            android:id="@+id/rulesTitle_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_rules"
+            style="@style/font_infoEvents"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/ruleText_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rulesText"
+            style="@style/font_infoEvents"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/relatLoy_main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/linearLay_rules"
+        >
+
+        <Button
+            android:id="@+id/btn_newGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btn_newGame" />
+
+        <Button
+            android:id="@+id/btn_continueGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_newGame"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btn_continueGame"
+            />
+
+        <Button
+            android:id="@+id/btn_rulesGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_continueGame"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btn_rules"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/btn_setupGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_rulesGame"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btn_setup"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrlView_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="67dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/relatLay_sub_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_Hello0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/Hello0" />
+
+            <TextView
+                android:id="@+id/tv_Hello1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello0"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                />
+<!--                android:text="@string/Hello1" -->
+
+            <TextView
+                android:id="@+id/tv_Hello2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello1"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                />
+<!--                android:text="@string/Hello2" -->
+
+            <TextView
+                android:id="@+id/tv_Hello3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello2"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                />
+<!--                android:text="@string/Hello3" -->
+            <TextView
+                android:id="@+id/tv_Hello4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello3"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                />
+<!--                android:text="@string/Hello4" -->
+
+            <TextView
+                android:id="@+id/tv_Hello5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello4"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                />
+<!--                android:text="@string/Hello5" -->
+
+            <TextView
+                android:id="@+id/tv_Hello6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="@string/Hello6" />
+
+            <Button
+                android:id="@+id/btn_goIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_Hello6"
+                android:layout_centerHorizontal="true"
+                android:text="@string/btn_goIn" />
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_goIn"
+                android:layout_centerHorizontal="true"
+                android:text="@string/btn_back" />
+        </RelativeLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

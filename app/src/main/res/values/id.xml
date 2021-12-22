@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="idBtn_subParameters_01" type="id"/>
+    <item name="idBtn_subParameters_02" type="id"/>
+    <item name="idBtn_subParameters_03" type="id"/>
+
+
+</resources>

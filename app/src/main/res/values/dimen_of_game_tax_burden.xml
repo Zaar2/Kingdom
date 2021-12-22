@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="tax_burden_agriculture">2</string>
+    <string name="tax_burden_trade">3.5</string>
+    <string name="tax_burden_industry">1.2</string>
+
+<!--    <dimen name="max_number_of_questions">5</dimen>-->
+</resources>
