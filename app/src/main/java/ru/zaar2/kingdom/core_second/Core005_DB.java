@@ -295,6 +295,9 @@ public class Core005_DB extends SQLiteOpenHelper {
         return result;
     }
 
+    /**
+     * !!!Вернет false в том числе если таблицы базы не инициализированны.
+     */
     public boolean updateParameter(int value, String nameParameter, String nameTable) {
         if (!get_isFilled()) {
             return false;

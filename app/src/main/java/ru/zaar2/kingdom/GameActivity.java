@@ -104,9 +104,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void btnNext_onClick(View v) {
-        fragment_tool.btn_solved_onClick(this);
+        if (fragment_tool.btn_solved_onClick(this)) {
+            updNumberOfIssuesResolved();
+        }
         closeFragment_toolActivity(fragment_tool);
-        updNumberOfIssuesResolved();
         openFragment_toolActivity();
 
         panelOfIndicators.updateView_Indicators(this);
