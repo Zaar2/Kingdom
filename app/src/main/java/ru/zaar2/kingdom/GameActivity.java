@@ -73,7 +73,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (value_arguments == 1) {
                 startNewGame();
             } else {
-                loadGame();
+                if (!loadGame()){
+                    startNewGame();
+                };
             }
         }
     }
@@ -90,13 +92,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         game();
     }
 
-    private void loadGame() {
+    private boolean loadGame() {
         //заполняем view from BD
-        panelOfResources.updateView_Resources(this);
+        if (!panelOfResources.updateView_Resources(this))
+            return false;
         panelOfIndicators.initViews_panel(this);
-        panelOfIndicators.updateView_Indicators(this);
+        if (!panelOfIndicators.updateView_Indicators(this))
+            return false;
 
         game();
+        return true;
     }
 
     private void game() {
@@ -110,8 +115,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         closeFragment_toolActivity(fragment_tool);
         openFragment_toolActivity();
 
-        panelOfIndicators.updateView_Indicators(this);
         panelOfResources.updateView_Resources(this);
+        panelOfIndicators.updateView_Indicators(this);
+
     }
 
     @SuppressLint("NonConstantResourceId")

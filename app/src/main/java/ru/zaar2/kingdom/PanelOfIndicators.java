@@ -53,10 +53,13 @@ public class PanelOfIndicators extends Panel {
         layoutPanelGroup.findViewById(R.id.panelGroup_divider).setVisibility(View.VISIBLE);
     }
 
-    public void updateView_Indicators(Context context){
+    public boolean updateView_Indicators(Context context){
         String table = context.getResources().getString(R.string.strDB_indicators);
         Bundle incoming_bundle = dataForDisplay(table, context);
 
+        if (!incoming_bundle.getBoolean(context.getResources().getString(R.string.str_isFilled_utility))){
+            return false;
+        }
         updateViews_panelGroup(
                 linearLayout_panel.findViewById(R.id.group_of_panel_people),
                 context.getResources().getStringArray(R.array.panelGroup_people).length,
@@ -87,6 +90,7 @@ public class PanelOfIndicators extends Panel {
                 incoming_bundle,
                 context
         );
+        return true;
     }
 
     private void updateViews_panelGroup(LinearLayout layoutPanelGroup, int countItemOf_panelGroup, Bundle incoming_bundle_fromBD, Context context){

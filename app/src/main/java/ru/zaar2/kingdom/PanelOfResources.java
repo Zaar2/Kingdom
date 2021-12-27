@@ -20,9 +20,13 @@ public class PanelOfResources extends Panel {
         decimalFormat = new DecimalFormat();
     }
 
-    public void updateView_Resources(Context context) {
+    public boolean updateView_Resources(Context context) {
         String table = context.getResources().getString(R.string.strDB_resources);
         Bundle incoming_bundle = dataForDisplay(table, context);
+
+        if (!incoming_bundle.getBoolean(context.getResources().getString(R.string.str_isFilled_utility))){
+            return false;
+        }
 
         ((TextView) linearLayout_resources.findViewById(R.id.num_of_people_tv_resource)).setText(
                 decimalFormat.format(incoming_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)))
@@ -36,6 +40,7 @@ public class PanelOfResources extends Panel {
         textView_yearsOfGame.setText(
                 decimalFormat.format(incoming_bundle.getInt(context.getResources().getString(R.string.strDB_years_resources)))
         );
+        return true;
     }
 
     public void incrementAndUpdateDB_Years(int incoming_years, Context context) {

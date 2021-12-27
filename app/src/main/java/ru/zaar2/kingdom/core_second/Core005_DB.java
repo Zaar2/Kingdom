@@ -233,6 +233,7 @@ public class Core005_DB extends SQLiteOpenHelper {
     /**
      * <p>!!! Вернет контейнер без значений, в случае если таблицы базы не были инициализированы.</p>
      * <p>!!!В этом случае Bundle будет содержать одно значение boolean:name->"isFilled_utility",value->false </p>
+     * <p>context.getResources().getString(R.string.str_isFilled_utility</p>
      *
      * @return Bundle dataContainer
      */
@@ -241,6 +242,8 @@ public class Core005_DB extends SQLiteOpenHelper {
         if (!get_isFilled()) {
             dataContainer.putBoolean(name_isFilled, false);
         } else {
+            dataContainer.putBoolean(name_isFilled, true);
+
             SQLiteDatabase database = getWritableDatabase();
 
             String query = "SELECT * FROM " + table;
