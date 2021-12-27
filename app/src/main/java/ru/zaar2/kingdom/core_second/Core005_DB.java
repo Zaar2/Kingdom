@@ -20,11 +20,20 @@ public class Core005_DB extends SQLiteOpenHelper {
     private String[][] ROWS_and_VALUES_TABLE_indicators;
     private String[][] ROWS_and_VALUES_TABLE_resources;
     private String[][] ROWS_and_VALUES_TABLE_accessory;
+    private String[][] ROWS_and_VALUES_TABLE_utility;
 
     private String NAME_TABLE_CHANGEABLE_PARAMETERS;// = "changeableParameters";
     private String NAME_TABLE_INDICATORS;// = "indicators";
     private String NAME_TABLE_RESOURCES;// = "resources";
     private String NAME_TABLE_ACCESSORY;//="accessory"
+    private String NAME_TABLE_UTILITY;
+
+    private String NAME = "Name";
+    private String ID = "_id";
+    private String VALUE_DEFAULT = "Value_default";
+    private String VALUE_CURRENTLY = "Value_currently";
+
+    private String name_isFilled;
 
     public Core005_DB(@Nullable Context context, int version) {
         super(
@@ -34,6 +43,7 @@ public class Core005_DB extends SQLiteOpenHelper {
                 version
         );
 
+        name_isFilled = context.getResources().getString(R.string.str_isFilled_utility);
         fillStringForQuery(context);
         fillNameTables(context);
     }
@@ -43,6 +53,7 @@ public class Core005_DB extends SQLiteOpenHelper {
         NAME_TABLE_INDICATORS = context.getResources().getString(R.string.strDB_indicators);
         NAME_TABLE_RESOURCES = context.getResources().getString(R.string.strDB_resources);
         NAME_TABLE_ACCESSORY = context.getResources().getString(R.string.strDB_accessory);
+        NAME_TABLE_UTILITY = context.getResources().getString(R.string.strDB_utility);
     }
 
     private void fillStringForQuery(Bundle res_bundle, Bundle indic_bundle, Bundle accessory_bundle, Context context) {
@@ -85,21 +96,24 @@ public class Core005_DB extends SQLiteOpenHelper {
                 {context.getResources().getString(R.string.strDB_born_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_born_accessory)))},
                 {context.getResources().getString(R.string.strDB_dead_epidemic_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_epidemic_accessory)))},
                 {context.getResources().getString(R.string.strDB_dead_in_fire_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_in_fire_accessory)))},
-                {context.getResources().getString(R.string.strDB_dead_in_rebellion_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_in_rebellion_accessory)))},
-                {context.getResources().getString(R.string.strDB_dead_in_starvation_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_in_starvation_accessory)))},
-                {context.getResources().getString(R.string.strDB_plunder_grain_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_plunder_grain_accessory)))},
-                {context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory)))},
+                {context.getResources().getString(R.string.strDB_dead_in_rebellion_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_in_rebellion_accessory)))},
+                {context.getResources().getString(R.string.strDB_dead_in_starvation_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_in_starvation_accessory)))},
+                {context.getResources().getString(R.string.strDB_plunder_grain_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_plunder_grain_accessory)))},
+                {context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory)))},
                 {context.getResources().getString(R.string.strDB_grain_burnt_down_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_grain_burnt_down_accessory)))},
-                {context.getResources().getString(R.string.strDB_raid_capture_grain_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_grain_accessory)))},
-                {context.getResources().getString(R.string.strDB_raid_capture_land_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_land_accessory)))},
-                {context.getResources().getString(R.string.strDB_raid_capture_people_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_people_accessory)))},
-                {context.getResources().getString(R.string.strDB_raid_dead_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_dead_accessory)))},
-                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_year_of_return_accessory)))}
+                {context.getResources().getString(R.string.strDB_raid_capture_grain_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_grain_accessory)))},
+                {context.getResources().getString(R.string.strDB_raid_capture_land_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_land_accessory)))},
+                {context.getResources().getString(R.string.strDB_raid_capture_people_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_people_accessory)))},
+                {context.getResources().getString(R.string.strDB_raid_dead_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_dead_accessory)))},
+                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_year_of_return_accessory)))}
         };
     }
 
     private void fillStringForQuery(Context context) {
         bcc004_initializingStartingValueDB StartingValue = new bcc004_initializingStartingValueDB();
+        ROWS_and_VALUES_TABLE_utility = new String[][]{
+                {name_isFilled, "true"}
+        };
         ROWS_and_VALUES_TABLE_resources = new String[][]{
                 {context.getResources().getString(R.string.strDB_population_resources), String.valueOf(StartingValue.def_POPULATION_RESOURCES)},
                 {context.getResources().getString(R.string.strDB_budget_resources), String.valueOf(StartingValue.def_BUDGET_RESOURCES)},
@@ -132,26 +146,26 @@ public class Core005_DB extends SQLiteOpenHelper {
                 {context.getResources().getString(R.string.strDB_born_accessory), String.valueOf(StartingValue.def_BORN_ACCESSORY)},
                 {context.getResources().getString(R.string.strDB_dead_epidemic_accessory), String.valueOf(StartingValue.def_DEAD_EPIDEMIC_ACCESSORY)},
                 {context.getResources().getString(R.string.strDB_dead_in_fire_accessory), String.valueOf(StartingValue.def_DEAD_IN_FIRE_ACCESSORY)},
-                {context.getResources().getString(R.string.strDB_dead_in_rebellion_accessory),String.valueOf(StartingValue.def_DEAD_IN_REBELLION)},
-                {context.getResources().getString(R.string.strDB_dead_in_starvation_accessory),String.valueOf(StartingValue.def_DEAD_IN_STARVATION)},
-                {context.getResources().getString(R.string.strDB_plunder_grain_accessory),String.valueOf(StartingValue.def_PLUNDER_GRAIN)},
-                {context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory),String.valueOf(StartingValue.def_LOSS_GRAIN_IN_DIVERSION)},
+                {context.getResources().getString(R.string.strDB_dead_in_rebellion_accessory), String.valueOf(StartingValue.def_DEAD_IN_REBELLION)},
+                {context.getResources().getString(R.string.strDB_dead_in_starvation_accessory), String.valueOf(StartingValue.def_DEAD_IN_STARVATION)},
+                {context.getResources().getString(R.string.strDB_plunder_grain_accessory), String.valueOf(StartingValue.def_PLUNDER_GRAIN)},
+                {context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory), String.valueOf(StartingValue.def_LOSS_GRAIN_IN_DIVERSION)},
                 {context.getResources().getString(R.string.strDB_grain_burnt_down_accessory), String.valueOf(StartingValue.def_GRAIN_BURNT_DOWN_ACCESSORY)},
-                {context.getResources().getString(R.string.strDB_raid_capture_grain_accessory),String.valueOf(StartingValue.def_RAID_CAPTURE_GRAIN)},
-                {context.getResources().getString(R.string.strDB_raid_capture_land_accessory),String.valueOf(StartingValue.def_RAID_CAPTURE_LAND)},
-                {context.getResources().getString(R.string.strDB_raid_capture_people_accessory),String.valueOf(StartingValue.def_RAID_CAPTURE_PEOPLE)},
-                {context.getResources().getString(R.string.strDB_raid_dead_accessory),String.valueOf(StartingValue.def_RAID_DEAD)},
-                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory),String.valueOf(StartingValue.def_RAID_YEAR_OF_RETURN)}
+                {context.getResources().getString(R.string.strDB_raid_capture_grain_accessory), String.valueOf(StartingValue.def_RAID_CAPTURE_GRAIN)},
+                {context.getResources().getString(R.string.strDB_raid_capture_land_accessory), String.valueOf(StartingValue.def_RAID_CAPTURE_LAND)},
+                {context.getResources().getString(R.string.strDB_raid_capture_people_accessory), String.valueOf(StartingValue.def_RAID_CAPTURE_PEOPLE)},
+                {context.getResources().getString(R.string.strDB_raid_dead_accessory), String.valueOf(StartingValue.def_RAID_DEAD)},
+                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), String.valueOf(StartingValue.def_RAID_YEAR_OF_RETURN)}
         };
     }
 
     private void createTable(SQLiteDatabase sqLiteDatabase, String nameTable) {
         sqLiteDatabase.execSQL(
                 "create table " + nameTable + " ("
-                        + "_id int primary key, "
-                        + "Name text, "
-                        + "Value_default int, "
-                        + "Value_currently int"
+                        + ID + " int primary key, "
+                        + NAME + " text, "
+                        + VALUE_DEFAULT + " int, "
+                        + VALUE_CURRENTLY + " int"
                         + ");"
         );
     }
@@ -170,31 +184,42 @@ public class Core005_DB extends SQLiteOpenHelper {
         database.execSQL(
                 "drop table if exists " + NAME_TABLE_ACCESSORY
         );
+        database.execSQL(
+                "drop table if exists " + NAME_TABLE_UTILITY
+        );
     }
 
     private void insertValues() {
 
         SQLiteDatabase database = getWritableDatabase();
         ContentValues values = new ContentValues();
+
+        for (int i = 0; i < ROWS_and_VALUES_TABLE_utility.length; i++) {
+            values.put(ID, i);
+            values.put(NAME, ROWS_and_VALUES_TABLE_utility[i][0]);
+            values.put(VALUE_DEFAULT, ROWS_and_VALUES_TABLE_utility[i][1]);
+            values.put(VALUE_CURRENTLY, ROWS_and_VALUES_TABLE_utility[i][1]);
+            database.insert(NAME_TABLE_UTILITY, null, values);
+        }
         for (int i = 0; i < ROWS_and_VALUES_TABLE_indicators.length; i++) {
-            values.put("_id", i);
-            values.put("Name", (ROWS_and_VALUES_TABLE_indicators[i][0]));
-            values.put("Value_default", Integer.parseInt(ROWS_and_VALUES_TABLE_indicators[i][1]));
-            values.put("Value_currently", Integer.parseInt(ROWS_and_VALUES_TABLE_indicators[i][1]));
+            values.put(ID, i);
+            values.put(NAME, (ROWS_and_VALUES_TABLE_indicators[i][0]));
+            values.put(VALUE_DEFAULT, Integer.parseInt(ROWS_and_VALUES_TABLE_indicators[i][1]));
+            values.put(VALUE_CURRENTLY, Integer.parseInt(ROWS_and_VALUES_TABLE_indicators[i][1]));
             database.insert(NAME_TABLE_INDICATORS, null, values);
         }
         for (int i = 0; i < ROWS_and_VALUES_TABLE_resources.length; i++) {
-            values.put("_id", i);
-            values.put("Name", (ROWS_and_VALUES_TABLE_resources[i][0]));
-            values.put("Value_default", Integer.parseInt((ROWS_and_VALUES_TABLE_resources[i][1])));
-            values.put("Value_currently", Integer.parseInt((ROWS_and_VALUES_TABLE_resources[i][1])));
+            values.put(ID, i);
+            values.put(NAME, (ROWS_and_VALUES_TABLE_resources[i][0]));
+            values.put(VALUE_DEFAULT, Integer.parseInt((ROWS_and_VALUES_TABLE_resources[i][1])));
+            values.put(VALUE_CURRENTLY, Integer.parseInt((ROWS_and_VALUES_TABLE_resources[i][1])));
             database.insert(NAME_TABLE_RESOURCES, null, values);
         }
         for (int i = 0; i < ROWS_and_VALUES_TABLE_accessory.length; i++) {
-            values.put("_id", i);
-            values.put("Name", (ROWS_and_VALUES_TABLE_accessory[i][0]));
-            values.put("Value_default", Integer.parseInt(ROWS_and_VALUES_TABLE_accessory[i][1]));
-            values.put("Value_currently", Integer.parseInt(ROWS_and_VALUES_TABLE_accessory[i][1]));
+            values.put(ID, i);
+            values.put(NAME, (ROWS_and_VALUES_TABLE_accessory[i][0]));
+            values.put(VALUE_DEFAULT, Integer.parseInt(ROWS_and_VALUES_TABLE_accessory[i][1]));
+            values.put(VALUE_CURRENTLY, Integer.parseInt(ROWS_and_VALUES_TABLE_accessory[i][1]));
             database.insert(NAME_TABLE_ACCESSORY, null, values);
         }
     }
@@ -205,74 +230,101 @@ public class Core005_DB extends SQLiteOpenHelper {
         insertValues();
     }
 
+    /**
+     * <p>!!! Вернет контейнер без значений, в случае если таблицы базы не были инициализированы.</p>
+     * <p>!!!В этом случае Bundle будет содержать одно значение boolean:name->"isFilled_utility",value->false </p>
+     *
+     * @return Bundle dataContainer
+     */
     public Bundle dataForDisplay(String table) {
         Bundle dataContainer = new Bundle();
+        if (!get_isFilled()) {
+            dataContainer.putBoolean(name_isFilled, false);
+        } else {
+            SQLiteDatabase database = getWritableDatabase();
 
-        SQLiteDatabase database = getWritableDatabase();
+            String query = "SELECT * FROM " + table;
+            Cursor cursor = database.rawQuery(query, null);
+            cursor.moveToFirst();
 
-        String query = "SELECT * FROM " + table;
-        Cursor cursor = database.rawQuery(query, null);
-        cursor.moveToFirst();
-
-        while (!cursor.isAfterLast()) {
+            while (!cursor.isAfterLast()) {
 //            int id_ColIndex = cursor.getColumnIndex("_id");
-            int name_ColIndex = cursor.getColumnIndex("Name");
+                int name_ColIndex = cursor.getColumnIndex("Name");
 //            int value_default_ColIndex = cursor.getColumnIndex("Value_default");
-            int value_currently_ColIndex = cursor.getColumnIndex("Value_currently");
+                int value_currently_ColIndex = cursor.getColumnIndex("Value_currently");
 
-            dataContainer.putInt(
-                    cursor.getString(name_ColIndex),
-                    Integer.parseInt(cursor.getString(value_currently_ColIndex))
-            );
+                dataContainer.putInt(
+                        cursor.getString(name_ColIndex),
+                        Integer.parseInt(cursor.getString(value_currently_ColIndex))
+                );
 
-            cursor.moveToNext();
+                cursor.moveToNext();
+            }
+            cursor.close();
         }
-        cursor.close();
         return dataContainer;
     }
 
+    /**
+     * <p>!!! вернет "-100", в случае если таблицы базы не были инициализированы.</p>
+     */
     public int findCurrentlyValue_ofSpecifiedParameter(String nameParameter, String nameTable) {
         int result;
 
-        SQLiteDatabase database = this.getWritableDatabase();
-//        String query = "SELECT Name, Value_currently FROM " + nameTable + " WHERE Name = '" + nameParameter + "';";
-//        Cursor cursor = database.rawQuery(query, null);
-        Cursor cursor = database.query(
-                nameTable,
-                new String[]{"_id", "Name", "Value_currently"},
-                "Name = ?",
-                new String[]{nameParameter},
-                null,
-                null,
-                null
-        );
-        cursor.moveToFirst();
+        if (!get_isFilled()) {
+            result = -100;
+        } else {
+            SQLiteDatabase database = this.getWritableDatabase();
+            Cursor cursor = database.query(
+                    nameTable,
+                    new String[]{"_id", "Name", "Value_currently"},
+                    "Name = ?",
+                    new String[]{nameParameter},
+                    null,
+                    null,
+                    null
+            );
+            cursor.moveToFirst();
 
-        int value_currently_ColIndex = cursor.getColumnIndex("Value_currently");
-        result = cursor.getInt(value_currently_ColIndex);
+            int value_currently_ColIndex = cursor.getColumnIndex("Value_currently");
+            result = cursor.getInt(value_currently_ColIndex);
 
-        cursor.close();
-        database.close();
+            cursor.close();
+            database.close();
+        }
         return result;
     }
 
     public boolean updateParameter(int value, String nameParameter, String nameTable) {
-        int id = -1;
-        SQLiteDatabase database = getWritableDatabase();
+        if (!get_isFilled()) {
+            return false;
+        } else {
 
-        ContentValues values = new ContentValues();
-        values.put("Value_currently", value);
-        id = database.update(nameTable, values, "Name = ?", new String[]{nameParameter});
+            int id = -1;
+            SQLiteDatabase database = getWritableDatabase();
 
-        database.close();
-        return (id >= 0);
+            ContentValues values = new ContentValues();
+            values.put("Value_currently", value);
+            id = database.update(nameTable, values, "Name = ?", new String[]{nameParameter});
+
+            database.close();
+            return (id >= 0);
+        }
     }
 
-    public void updateDB(Bundle resource_date, Bundle indicators_date, Bundle bundle_accessory, Context context) {
-        dropTables();
-        onCreate(this.getWritableDatabase());
-        fillStringForQuery(resource_date, indicators_date, bundle_accessory, context);
-        insertValues();
+    /**
+     * !!!Вернет false в том числе если таблицы базы не инициализированны.
+     */
+    public boolean updateDB(Bundle resource_date, Bundle indicators_date, Bundle bundle_accessory, Context context) {
+        if (!get_isFilled()) {
+            return false;
+        } else {
+            dropTables();
+            onCreate(this.getWritableDatabase());
+            fillStringForQuery(resource_date, indicators_date, bundle_accessory, context);
+            insertValues();
+            return true;
+        }
     }
 
     @Override
@@ -281,9 +333,42 @@ public class Core005_DB extends SQLiteOpenHelper {
         createTable(sqLiteDatabase, NAME_TABLE_INDICATORS);
         createTable(sqLiteDatabase, NAME_TABLE_RESOURCES);
         createTable(sqLiteDatabase, NAME_TABLE_ACCESSORY);
+        createTable(sqLiteDatabase, NAME_TABLE_UTILITY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    }
+
+    /**
+     * Проверяет выполнялся-ли уже метод для заполнения таблиц или таблицы в базе пустые.
+     * <p>При первом запуске приложения, в таблицу базы данных ("utility" -> context.getResources().getString(R.string.strDB_utility))</p>
+     * <p>вносится значение true для соответствующего поля ("isFilled_utility" -> context.getResources().getString(R.string.str_isFilled_utility)),</p>
+     * <p>В дальнейшем значение для этого поля не модифицируется</p>
+     **/
+    private boolean get_isFilled() {
+        boolean isFilled;
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.query(
+                NAME_TABLE_UTILITY,
+                new String[]{ID, NAME, VALUE_CURRENTLY},
+                NAME + " = ?",
+                new String[]{name_isFilled},
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        if (cursor.getCount() <= 0) {
+            isFilled = false;
+        } else {
+            int value_currently_ColIndex = cursor.getColumnIndex(VALUE_CURRENTLY);
+            String result = cursor.getString(value_currently_ColIndex);
+            isFilled = result.equals("true");
+        }
+        cursor.close();
+        database.close();
+        return isFilled;
     }
 }

@@ -25,9 +25,11 @@ public class Core000_calc {
         indicators_data_bundle = db.dataForDisplay(nameTable_indicators);
         accessory_data_bundle = db.dataForDisplay(nameTable_accessory);
     }
-
-    public void updateDB(Context context) {
-        new Core005_DB(context, 1).updateDB(
+    /**
+     *!!!Вернет false в том числе если таблицы базы не инициализированны.
+     */
+    public boolean updateDB(Context context) {
+        return new Core005_DB(context, 1).updateDB(
                 resources_data_bundle,
                 indicators_data_bundle,
                 accessory_data_bundle,
