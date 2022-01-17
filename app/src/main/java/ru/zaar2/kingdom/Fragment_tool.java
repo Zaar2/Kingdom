@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +18,18 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import ru.zaar2.kingdom.core_second.bcc.TextForToast_FragmentTool;
+import ru.zaar2.kingdom.core_second.bcc.bcc001_value;
 import ru.zaar2.kingdom.core_second.EntryToCore;
 
 public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private View v;
     private String title;
-    private final boolean isOver = false;
+//    private final boolean isOver = false;
 
     private String info_text;
     private int maxValue_seekBar = 0;
-    private int currentValue_seekBar_approved;
 
     private EditText editText_frag;
     private SeekBar seekBar_frag;
@@ -60,8 +62,9 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
     }
 
     private void settingSeekBar() {
+        int currentValue_seekBar_approved = 0;
+
         seekBar_frag.setMax(maxValue_seekBar);
-        currentValue_seekBar_approved = 0;
         seekBar_frag.setProgress(currentValue_seekBar_approved);
     }
 
@@ -73,28 +76,98 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
         );
     }
 
-    public boolean btn_solved_onClick(Context context) {
-        if (seekBar_frag.getProgress() >= 0 && seekBar_frag.getProgress() < maxValue_seekBar) {
+    public boolean btn_solved_onClick(Context context, int question) {
+        String textForToast;
+        boolean result;
+        if (seekBar_frag.getProgress() >= 0 && seekBar_frag.getProgress() <= maxValue_seekBar) {
+            textForToast = getText_forToast(question, context);
             new EntryToCore().calcDB_forQuestions(context, seekBar_frag.getProgress());
-            return true;
+            result = true;
         } else {
             if (seekBar_frag.getProgress() < 0) {
                 seekBar_frag.setProgress(0);
-                Toast.makeText(
-                        context,
-                        "Ошиблись, Ваше сиятельство. Меньше чем ноль - не может быть.",
-                        Toast.LENGTH_LONG
-                ).show();
+                textForToast = getText_forToast(TextForToast_FragmentTool.less_than_0, context);
             }
             if (seekBar_frag.getProgress() > maxValue_seekBar)
                 seekBar_frag.setProgress(maxValue_seekBar);
-            Toast.makeText(
-                    context,
-                    "Сожалею Ваше сиятельство, но Ваше указание невозможно выполнить в точности. Слишком мало ресурсов. Но мы конечно же отдадим все что у нас есть.",
-                    Toast.LENGTH_LONG
-            ).show();
-            return false;
+            textForToast = getText_forToast(TextForToast_FragmentTool.not_enough, context);
+            result = false;
         }
+        if (!textForToast.equals("")) {
+            Toast toast = Toast.makeText(
+//                    context,
+                    getContext(),
+                    textForToast,
+                    Toast.LENGTH_LONG
+            );
+            TextView textView = (TextView) toast.getView().findViewById(android.R.id.message);
+            if (textView != null) textView.setGravity(Gravity.CENTER);
+            toast.show();
+        }
+        return result;
+    }
+
+    private String getText_forToast(int question, Context context) {
+        String outputString = "";
+        TextForToast_FragmentTool textForToast = TextForToast_FragmentTool.not_defined;
+        switch (question) {
+            case 0: //Сколько купим земли?
+                break;
+            case 1: //Сколько продадим земли?
+//                break;
+            case 2: //Сколько человек определим в городовой полк?
+                break;
+            case 3: //Сколько зерна определим каждому горожанину для прокорма на год?
+                if (seekBar_frag.getProgress() < ((int) (bcc001_value.FEEDING_PER_CITIZEN_NORMAL / 8))) {
+                    textForToast = TextForToast_FragmentTool.headsman;
+                    break;
+                }
+                if (seekBar_frag.getProgress() < ((int) (bcc001_value.FEEDING_PER_CITIZEN_NORMAL / 2))) {
+                    textForToast = TextForToast_FragmentTool.greedy;
+                    break;
+                }
+                if (seekBar_frag.getProgress() > ((int) (bcc001_value.FEEDING_PER_CITIZEN_NORMAL * 2))) {
+                    textForToast = TextForToast_FragmentTool.benefactor;
+                    break;
+                }
+                break;
+            case 4: //Сколько земли засеем?
+//                break;
+            case 5: //Сколько пошлем в набег?
+//                break;
+            default:
+                break;
+        }
+
+        switch (textForToast) {
+            case benefactor:
+                outputString = context.getResources().getString(R.string.textForToast_fragment_benefactor);
+                break;
+            case greedy:
+                outputString = context.getResources().getString(R.string.textForToast_fragment_greedy);
+                break;
+            case headsman:
+                outputString = context.getResources().getString(R.string.textForToast_fragment_headsman);
+            case not_defined:
+            default:
+                break;
+        }
+        return outputString;
+    }
+
+    private String getText_forToast(TextForToast_FragmentTool textForToast, Context context) {
+        String outputString = "";
+        switch (textForToast) {
+            case less_than_0:
+                outputString = context.getResources().getString(R.string.textForToast_fragment_lessThan0);
+                break;
+            case not_enough:
+                outputString = context.getResources().getString(R.string.textForToast_fragment_notEnough);
+                break;
+            default:
+                break;
+        }
+        return outputString;
     }
 
 //    private void editText_setOnKeyListener() {
@@ -171,7 +244,7 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
                             if (progress.equals("")) {
                                 progress = "0";
                                 editText_frag.setText(progress);
-                                int position= progress.length();
+                                int position = progress.length();
                                 editText_frag.setSelection(position);
                             }
                             seekBar_frag.setProgress(Integer.parseInt(progress));

@@ -109,7 +109,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void btnNext_onClick(View v) {
-        if (fragment_tool.btn_solved_onClick(this)) {
+        if (fragment_tool.btn_solved_onClick(this, getNumberOfIssuesResolved())) {
             updNumberOfIssuesResolved();
         }
         closeFragment_toolActivity(fragment_tool);

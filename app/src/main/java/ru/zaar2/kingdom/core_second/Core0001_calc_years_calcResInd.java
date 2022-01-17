@@ -115,12 +115,18 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         );
     }
 
+    /**
+     * <p>Если зерна на прокорм не дали, то все умерли и игра заканчивается</p>
+     */
     public void calc_defeat_dueTo_starvation(Context context, ArrayList<Integer> eventsList){
         if (accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_grain_per_citizen_accessory))==0){
             eventsList.add(R.string.event_defeat_dueTo_starvation);
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_0_fire_diversion(Context context, ArrayList<Integer> eventsList) {
         if (randomized.random(15) == 2 && randomized.random(15) == 10) {
             int dead, burnt_down;
@@ -159,6 +165,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_6_diversion(Context context, ArrayList<Integer> eventsList) {
         if (randomized.random(20) == 5 && randomized.random(15) == 10) {
             int burnt_down, grain, grainLoss;
@@ -181,6 +190,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_1_rats(Context context, ArrayList<Integer> eventsList) {
         if (randomized.random(15) < 6) {
             int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
@@ -195,6 +207,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_2_migratory(Context context, ArrayList<Integer> eventsList) {
         if (
                 indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_distance_to_indicator)) < 25
@@ -210,6 +225,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_3_rebellion(Context context, ArrayList<Integer> eventsList) {
         if (
                 accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_grain_per_citizen_accessory)) < 10
@@ -240,6 +258,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>t
+     */
     public void calc_event_4_5_epidemic_demographic(Context context, ArrayList<Integer> eventsList) {
         if (randomized.random(15) == 2 && randomized.random(15) == 10) {
             //epidemic
@@ -272,6 +293,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_7_8_personCanHandle_increased_decline(Context context, ArrayList<Integer> eventsList) {
         if (randomized.random(15) == 7 && randomized.random(15) == 12) {
             //increased
@@ -300,6 +324,10 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p>Засев более 95% земли, вызывает истощение почвы.</p>
+     * <p>Засев менее половины земли, вызывает повышение урожайности.</p>
+     */
     public void calc_event_9_10_cropYieldsImproved_landDepletion(Context context, ArrayList<Integer> eventsList) {
         int revision = 0;
         int cropYield = 1;
@@ -341,6 +369,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         );
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_11_plunder(Context context, ArrayList<Integer> eventsList) {
         if (randomized.random(15) > 12) {
             int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
@@ -359,6 +390,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         }
     }
 
+    /**
+     * <p></p>
+     */
     public void calc_event_12_aggressor(Context context, ArrayList<Integer> eventsList) {
         if (indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_distance_to_indicator)) > 0) {
             if (
