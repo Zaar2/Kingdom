@@ -25,35 +25,12 @@
     <string name="_______________">_______________</string>
 
     <!-- degree of corruption -->
-    <string name="text_degree_of_corruption_0">отсутствует</string>
-    <string name="text_degree_of_corruption_1">незначительная</string>
-    <string name="text_degree_of_corruption_2">значительная</string>
-    <string name="text_degree_of_corruption_3">ужасная</string>
-    <string name="text_degree_of_corruption_4">катастрофическая</string>
 
     <!-- text -->
     <string name="text_default_value_peoples">9 999 999</string>
     <string name="text_default_value_money">9 999 999</string>
     <string name="text_default_value_corruption">отсутствует</string>
-    <string name="text_default_value_moods">98</string>
     <string name="text_default_value_averageIncomes">9999 000</string>
-
-    <string-array name="items_of_panel">
-        <item>@string/name_indicators_increaseInPopulation_1</item>
-        <item>@string/name_indicators_mortality_2</item>
-        <item>@string/name_indicators_migratoryIncreaseInPopulation_3</item>
-        <item>@string/name_indicators_landInOwnership_4</item>
-        <item>@string/name_indicators_productivity_5</item>
-        <item>@string/name_indicators_grainReserve_6</item>
-        <item>@string/name_indicators_landValue_7</item>
-        <item>@string/name_indicators_personCanHandle_8</item>
-        <item>@string/name_indicators_army_9</item>
-        <item>@string/name_indicators_warriors_in_a_raid_10</item>
-        <item>@string/name_indicators_unemployed_person_11</item>
-        <item>@string/name_indicators_aggressor_12</item>
-        <item>@string/name_indicators_distance_to_13</item>
-        <item>@string/name_indicators_loss_14</item>
-    </string-array>
 
     <string-array name="panelGroup_people">
         <item>@string/name_indicators_increaseInPopulation_1</item>

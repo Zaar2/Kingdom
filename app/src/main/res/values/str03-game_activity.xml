@@ -2,9 +2,7 @@
 <resources>
 
     <string name="btn_indicatorsAndStatistics"><u>Текущие показатели</u></string>
-    <string name="btn_changeableParameters"><u>Параметры</u></string>
-    <string name="btn_currentOfTime">Течение времени</string>
-    
+
     <string name="nameTextViewOfResources_population">Население</string>
     <string name="nameTextViewOfResources_budget">Запас зерна</string>
     <string name="nameTextViewOfResources_acreage">Площадь</string>

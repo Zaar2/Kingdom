@@ -27,13 +27,5 @@
         <item>@string/name_question5</item>
         <item>@string/name_question6</item>
     </string-array>
-    <string-array name="text_questions_arr">
-        <item>@string/text_question1</item>
-        <item>@string/text_question2</item>
-        <item>@string/text_question3</item>
-        <item>@string/text_question4</item>
-        <item>@string/text_question5</item>
-        <item>@string/text_question6</item>
-    </string-array>
 
 </resources>

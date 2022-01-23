@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="infoText_current_values">Отражено текущее значение параметра</string>
-    <string name="infoText_values_saved">Значение параметра сохранено</string>
-    <string name="btnText_save">Утвержд.</string>
-    <string name="btnText_load">Вернуть</string>
-    <string name="tv_restOfBudget">rest of budget:\u0020</string>
-    <string name="btnText_solved">Следующий</string>
-</resources>
+<resources></resources>

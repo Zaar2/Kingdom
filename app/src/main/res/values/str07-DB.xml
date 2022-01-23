@@ -54,59 +54,8 @@
     <string name="strDB_distance_to_indicator">distance_to_indicator</string>
 
     <!--    ROWS_and_DEFAULT_VALUES_TABLE_changeableParameters-->
-    <string name="str_human_tax">human_tax</string>
-    <string name="str_agriculture_tax">agriculture_tax</string>
-    <string name="str_trade_tax">trade_tax</string>
-    <string name="str_industry_tax">industry_tax</string>
-    <string name="str_management_style">management_style</string>
-    <string name="str_agriculture_expense">agriculture_expense</string>
-    <string name="str_industry_expense">industry_expense</string>
-    <string name="str_trade_expense">trade_expense</string>
-    <string name="str_socialPrograms_expense">socialPrograms_expense</string>
-    <string name="str_army_expense">army_expense</string>
 
     <!--    ROWS_and_DEFAULT_VALUES_TABLE_utility-->
     <string name="str_isFilled_utility">isFilled_utility</string>
 
-    <string-array name="names_indicators">
-        <item>@string/strDB_increaseInPopulation_indicator</item>
-        <item>@string/strDB_mortality_indicator</item>
-        <item>@string/strDB_migratoryIncreaseInPopulation_indicator</item>
-        <item>@string/strDB_landInOwnership_indicator</item>
-        <item>@string/strDB_cropYields_indicator</item>
-        <item>@string/strDB_grainReserve_indicator</item>
-        <item>@string/strDB_landValue_indicator</item>
-        <item>@string/strDB_personCanHandle_indicator</item>
-        <item>@string/strDB_army_indicator</item>
-        <item>@string/strDB_warriors_in_a_Raid_indicator</item>
-        <item>@string/strDB_unemployed_person_indicator</item>
-        <item>@string/strDB_grainLoss_indicator</item>
-        <item>@string/strDB_aggressor_indicator</item>
-        <item>@string/strDB_distance_to_indicator</item>
-    </string-array>
-
-    <string-array name="names_parameters_expense">
-        <item>@string/str_agriculture_expense</item>
-        <item>@string/str_industry_expense</item>
-        <item>@string/str_trade_expense</item>
-        <item>@string/str_socialPrograms_expense</item>
-        <item>@string/str_army_expense</item>
-    </string-array>
-
-    <string-array name="names_accessory">
-<!--        <item>@string/strDB_average_incomes_people_previously_accessory</item>-->
-        <item>@string/strDB_currently_question_accessory</item>
-        <item>@string/strDB_sown_land_accessory</item>
-        <item>@string/strDB_accumulation_saboteur_accessory</item>
-        <item>@string/strDB_accumulation_land_productivity_accessory</item>
-        <item>@string/strDB_grain_per_citizen_accessory</item>
-        <item>@string/strDB_dead_in_battles_accessory</item>
-        <item>@string/strDB_born_accessory</item>
-        <item>@string/strDB_dead_epidemic_accessory</item>
-        <item>@string/strDB_dead_in_fire_accessory</item>
-        <item>@string/strDB_grain_burnt_down_accessory</item>
-        <item>@string/strDB_plunder_grain_accessory</item>
-        <item>@string/strDB_loss_grain_in_diversion_accessory</item>
-        <item>@string/strDB_dead_in_rebellion_accessory</item>
-    </string-array>
 </resources>
