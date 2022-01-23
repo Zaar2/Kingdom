@@ -20,28 +20,5 @@
     <string name="event_defeat_dueTo_starvation">17</string>
     <string name="event_defeat_in_raid">18</string>
     <string name="event_victory_in_raid">19</string>
-    <string name="instruction">20</string>
 
-    <array name="events">
-        <item>@string/event_fire</item>
-        <item>@string/event_rats</item>
-        <item>@string/event_migratory</item>
-        <item>@string/event_victory_over_rebellion</item>
-        <item>@string/event_epidemic</item>
-        <item>@string/event_demographic_explosion</item>
-        <item>@string/event_diversion</item>
-        <item>@string/event_personCanHandle_increased</item>
-        <item>@string/event_personCanHandle_decline</item>
-        <item>@string/event_land_depletion</item>
-        <item>@string/event_improved_yields</item>
-        <item>@string/event_plunder</item>
-        <item>@string/event_aggressor</item>
-        <item>@string/event_win_in_war</item>
-        <item>@string/event_defeat_in_war</item>
-        <item>@string/event_defeat_dueTo_hunger</item>
-        <item>@string/event_defeat_dueTo_rebellion</item>
-        <item>@string/event_defeat_dueTo_starvation</item>
-        <item>@string/event_defeat_in_raid</item>
-        <item>@string/event_victory_in_raid</item>
-    </array>
 </resources>
