@@ -100,12 +100,14 @@ public class Core005_DB extends SQLiteOpenHelper {
                 {context.getResources().getString(R.string.strDB_dead_in_starvation_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_dead_in_starvation_accessory)))},
                 {context.getResources().getString(R.string.strDB_plunder_grain_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_plunder_grain_accessory)))},
                 {context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory)))},
+                {context.getResources().getString(R.string.strDB_loss_grain_to_rats_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_loss_grain_to_rats_accessory)))},
                 {context.getResources().getString(R.string.strDB_grain_burnt_down_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_grain_burnt_down_accessory)))},
                 {context.getResources().getString(R.string.strDB_raid_capture_grain_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_grain_accessory)))},
                 {context.getResources().getString(R.string.strDB_raid_capture_land_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_land_accessory)))},
                 {context.getResources().getString(R.string.strDB_raid_capture_people_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_capture_people_accessory)))},
                 {context.getResources().getString(R.string.strDB_raid_dead_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_dead_accessory)))},
-                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_year_of_return_accessory)))}
+                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_raid_year_of_return_accessory)))},
+                {context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),String.valueOf(accessory_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory)))}
         };
     }
 
@@ -125,7 +127,7 @@ public class Core005_DB extends SQLiteOpenHelper {
                 {context.getResources().getString(R.string.strDB_mortality_indicator), String.valueOf(StartingValue.def_MORTALITY)},
                 {context.getResources().getString(R.string.strDB_migratoryIncreaseInPopulation_indicator), String.valueOf(StartingValue.def_MIGRATORY_INCREASE_IN_POPULATION)},
                 {context.getResources().getString(R.string.strDB_landInOwnership_indicator), String.valueOf(StartingValue.def_LAND_IN_OWNERSHIP)},
-                {context.getResources().getString(R.string.strDB_cropYields_indicator), String.valueOf(StartingValue.def_PRODUCTIVITY)},
+                {context.getResources().getString(R.string.strDB_cropYields_indicator), String.valueOf(StartingValue.def_CROP_YIELDS)},
                 {context.getResources().getString(R.string.strDB_grainReserve_indicator), String.valueOf(StartingValue.def_GRAIN_RESERVE)},
                 {context.getResources().getString(R.string.strDB_landValue_indicator), String.valueOf(StartingValue.def_LAND_VALUE)},
                 {context.getResources().getString(R.string.strDB_personCanHandle_indicator), String.valueOf(StartingValue.def_PERSON_CAN_HANDLE)},
@@ -150,12 +152,14 @@ public class Core005_DB extends SQLiteOpenHelper {
                 {context.getResources().getString(R.string.strDB_dead_in_starvation_accessory), String.valueOf(StartingValue.def_DEAD_IN_STARVATION)},
                 {context.getResources().getString(R.string.strDB_plunder_grain_accessory), String.valueOf(StartingValue.def_PLUNDER_GRAIN)},
                 {context.getResources().getString(R.string.strDB_loss_grain_in_diversion_accessory), String.valueOf(StartingValue.def_LOSS_GRAIN_IN_DIVERSION)},
+                {context.getResources().getString(R.string.strDB_loss_grain_to_rats_accessory),String.valueOf(StartingValue.def_LOSS_GRAIN_TO_RATS)},
                 {context.getResources().getString(R.string.strDB_grain_burnt_down_accessory), String.valueOf(StartingValue.def_GRAIN_BURNT_DOWN_ACCESSORY)},
                 {context.getResources().getString(R.string.strDB_raid_capture_grain_accessory), String.valueOf(StartingValue.def_RAID_CAPTURE_GRAIN)},
                 {context.getResources().getString(R.string.strDB_raid_capture_land_accessory), String.valueOf(StartingValue.def_RAID_CAPTURE_LAND)},
                 {context.getResources().getString(R.string.strDB_raid_capture_people_accessory), String.valueOf(StartingValue.def_RAID_CAPTURE_PEOPLE)},
                 {context.getResources().getString(R.string.strDB_raid_dead_accessory), String.valueOf(StartingValue.def_RAID_DEAD)},
-                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), String.valueOf(StartingValue.def_RAID_YEAR_OF_RETURN)}
+                {context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), String.valueOf(StartingValue.def_RAID_YEAR_OF_RETURN)},
+                {context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),String.valueOf(StartingValue.def_CROP_YIELDS_CUMULATIVE_EFFECT_ACCESSORY)}
         };
     }
 

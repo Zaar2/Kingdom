@@ -25,11 +25,13 @@
     <string name="strDB_grain_burnt_down_accessory">grain_burnt_down_accessory</string>
     <string name="strDB_plunder_grain_accessory">plunder_grain_accessory</string>
     <string name="strDB_loss_grain_in_diversion_accessory">loss_grain_in_diversion_accessory</string>
+    <string name="strDB_loss_grain_to_rats_accessory">loss_grain_to_rats_accessory</string>
     <string name="strDB_raid_capture_land_accessory">raid_capture_land_accessory</string>
     <string name="strDB_raid_capture_grain_accessory">raid_capture_grain_accessory</string>
     <string name="strDB_raid_capture_people_accessory">raid_capture_people_accessory</string>
     <string name="strDB_raid_dead_accessory">raid_dead_accessory</string>
     <string name="strDB_raid_year_of_return_accessory">raid_year_of_return_accessory</string>
+    <string name="strDB_cropYields_cumulativeEffectDepletion_accessory">cropYields_cumulativeEffectDepletion_accessory</string>
 
 <!--    ROWS_and_DEFAULT_VALUES_TABLE_resources-->
     <string name="strDB_population_resources">population_resources</string>

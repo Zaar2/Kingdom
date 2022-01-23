@@ -1,6 +1,7 @@
 package ru.zaar2.kingdom;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.text.Editable;
@@ -50,6 +51,7 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
         settingSeekBar();
         settingView();
 
+//        editText_onFocusChangeListener();
         editText_setOnEditorActionListener();
         editText_addTextChangedListener();
         seekBar_frag.setOnSeekBarChangeListener(this);
@@ -100,8 +102,11 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
                     textForToast,
                     Toast.LENGTH_LONG
             );
-            TextView textView = (TextView) toast.getView().findViewById(android.R.id.message);
-            if (textView != null) textView.setGravity(Gravity.CENTER);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                TextView textView = (TextView) toast.getView().findViewById(android.R.id.message);
+                if (textView != null)
+                    textView.setGravity(Gravity.CENTER);
+            }
             toast.show();
         }
         return result;
@@ -253,6 +258,18 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
                     }
                 });
     }
+
+//    private void editText_onFocusChangeListener(){
+//        editText_frag.setOnFocusChangeListener(
+//                new View.OnFocusChangeListener() {
+//                    @Override
+//                    public void onFocusChange(View view, boolean b) {
+//                        editText_frag.setFocusable(true);
+//
+//                    }
+//                }
+//        );
+//    }
 
     public void setTextTitle(String t) {
         title = t;

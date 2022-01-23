@@ -50,13 +50,14 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:gravity="left"
+                    android:gravity="start"
                     style="@style/font_fragment_progressSeekBar"
                     android:id="@+id/valueOfSeekBar"
                     android:maxLines="1"
                     android:inputType="number"
                     android:imeOptions="actionDone"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusableInTouchMode="true"
                     />
             </LinearLayout>
         </LinearLayout>

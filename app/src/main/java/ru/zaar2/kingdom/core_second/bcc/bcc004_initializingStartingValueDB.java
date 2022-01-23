@@ -15,7 +15,7 @@ public final class bcc004_initializingStartingValueDB {
     public final int def_MIGRATORY_INCREASE_IN_POPULATION = (int) (randomized.random(10));
     public final int def_LAND_IN_OWNERSHIP = def_ACREAGE_RESOURCES;
     public final int def_GRAIN_RESERVE = def_BUDGET_RESOURCES;
-    public final int def_PRODUCTIVITY = def_BUDGET_RESOURCES / def_ACREAGE_RESOURCES;
+    public final int def_CROP_YIELDS = calc_cropYields(0);
     public final int def_LAND_VALUE = (int) (10 + randomized.random(20));
     public final int def_PERSON_CAN_HANDLE = 14;
     public final int def_ARMY_RESOURCES = 0;
@@ -38,6 +38,7 @@ public final class bcc004_initializingStartingValueDB {
     public final int def_GRAIN_BURNT_DOWN_ACCESSORY = 0;
     public final int def_PLUNDER_GRAIN = 0;
     public final int def_LOSS_GRAIN_IN_DIVERSION = 0;
+    public final int def_LOSS_GRAIN_TO_RATS = 0;
     public final int def_DEAD_IN_REBELLION = 0;
     public final int def_DEAD_IN_STARVATION = 0;
     public final int def_RAID_CAPTURE_LAND = 0;
@@ -45,4 +46,19 @@ public final class bcc004_initializingStartingValueDB {
     public final int def_RAID_CAPTURE_PEOPLE = 0;
     public final int def_RAID_DEAD = 0;
     public final int def_RAID_YEAR_OF_RETURN = 0;
+    public final int def_DEPLETION = 0;
+    public final int def_CROP_YIELDS_CUMULATIVE_EFFECT_ACCESSORY = 0;
+
+    private int calc_cropYields(int sign) {
+        int result;
+        result = (int) randomized.random(1, 8);
+        int a = (int) randomized.random(1, 30);
+        if (a >= 25) {
+            result = 10;
+        }
+        if (a <= 5) {
+            result = 1;
+        }
+        return result;
+    }
 }

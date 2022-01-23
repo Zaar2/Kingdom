@@ -52,10 +52,10 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                 context.getResources().getString(R.string.strDB_grainLoss_indicator),
                 0
         );
-        indicators_data_bundle.putInt(
-                context.getResources().getString(R.string.strDB_cropYields_indicator),
-                -1
-        );
+//        indicators_data_bundle.putInt(
+//                context.getResources().getString(R.string.strDB_cropYields_indicator),
+//                -1
+//        );
         indicators_data_bundle.putInt(
                 context.getResources().getString(R.string.strDB_landValue_indicator),
                 -1
@@ -78,7 +78,12 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
     }
 
     public void preCalc_resources_grain(Context context) {
-        int cropYields = calc_cropYields();
+        int cropYields = indicators_data_bundle.getInt(
+                context.getResources().getString(R.string.strDB_cropYields_indicator)
+        );
+        if (cropYields <= 0) {
+            cropYields = 1;
+        }
         indicators_data_bundle.putInt(
                 context.getResources().getString(R.string.strDB_cropYields_indicator),
                 cropYields
@@ -93,15 +98,15 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         );
     }
 
-    private int calc_cropYields() {
+    private int calc_cropYields(int sign) {
         int result;
-        result = (int) randomized.random(10);
-        int a = (int) randomized.random(15);
-        if (a > 12) {
+        result = (int) randomized.random(1, 8);
+        int a = (int) randomized.random(1, 30);
+        if (a >= 25 && sign > 0) {
             result = 10;
         }
-        if (a <= 3) {
-            result = 2;
+        if (a <= 5 && sign < 0) {
+            result = 1;
         }
         return result;
     }
@@ -197,8 +202,12 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         if (randomized.random(15) < 6) {
             int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
             int grainLoss = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_grainLoss_indicator));
-            int grain_lost_to_rats = (int) (grain / (randomized.random(7, 15)));
-            grainLoss += grain_lost_to_rats;
+            int grain_loss_to_rats = (int) (grain / (randomized.random(7, 15)));
+            accessory_data_bundle.putInt(
+                    context.getResources().getString(R.string.strDB_loss_grain_to_rats_accessory),
+                    grain_loss_to_rats
+            );
+            grainLoss += grain_loss_to_rats;
             indicators_data_bundle.putInt(
                     context.getResources().getString(R.string.strDB_grainLoss_indicator),
                     grainLoss
@@ -325,20 +334,30 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
     }
 
     /**
-     * <p>Засев более 95% земли, вызывает истощение почвы.</p>
-     * <p>Засев менее половины земли, вызывает повышение урожайности.</p>
+     * <p>Расчет истощения земли или повышения урожайности.</p>
+     * <p>-Засев более 95% земли, вызывает истощение почвы.</p>
+     * <p>-Засев менее половины земли, вызывает повышение урожайности.</p>
      */
     public void calc_event_9_10_cropYieldsImproved_landDepletion(Context context, ArrayList<Integer> eventsList) {
-        int revision = 0;
-        int cropYield = 1;
+        int adding = 0;
+        int cropYield = indicators_data_bundle.getInt(
+                context.getResources().getString(R.string.strDB_cropYields_indicator)
+        );
+        int sign = 0;
+        int cumulativeDepletion = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory));
         if (
             //landDepletion
                 accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) >
                         (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.95)
         ) {
-            cropYield = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_indicator));
-            revision = (-1);
-
+            if (cumulativeDepletion < 4) {
+                cumulativeDepletion++;
+            } else cumulativeDepletion = 4;
+            sign = -1;
+            accessory_data_bundle.putInt(
+                    context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),
+                    cumulativeDepletion
+            );
             eventsList.add(R.string.event_land_depletion);
         } else {
             //improved yields
@@ -346,22 +365,21 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                     accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) <=
                             (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) / 2)
             ) {
-                cropYield = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_indicator));
+                if (cumulativeDepletion > 0) {
+                    cumulativeDepletion--;
+                } else cumulativeDepletion = 0;
+                sign = 1;
                 eventsList.add(R.string.event_improved_yields);
             }
         }
-        revision *= (int) (randomized.random(1, cropYield / 2));
-        cropYield = (int) (randomized.random(1, 8));
-        int a = (int) randomized.random(1, 30);
-        if (a > 25 && revision > 0) {
-            cropYield = 10;
-        }
-        if (a < 5 && revision < 0) {
-            cropYield = 1;
-        }
-        cropYield += revision;
-        if (cropYield <= 0) {
-            cropYield = 1;
+        if (sign != 0)
+            adding += ((int) (randomized.random(1, (int) (cropYield / 2))) * sign);
+        if (sign < 0) adding += cumulativeDepletion;
+        if (adding != 0) {
+            cropYield += (int) (adding);
+            if (cropYield <= 0) {
+                cropYield = 1;
+            }
         }
         indicators_data_bundle.putInt(
                 context.getResources().getString(R.string.strDB_cropYields_indicator),

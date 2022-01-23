@@ -53,53 +53,172 @@ public class PanelOfIndicators extends Panel {
         layoutPanelGroup.findViewById(R.id.panelGroup_divider).setVisibility(View.VISIBLE);
     }
 
-    public boolean updateView_Indicators(Context context){
+    public boolean updateView_Indicators(int numOfIssue, Context context) {
         String table = context.getResources().getString(R.string.strDB_indicators);
         Bundle incoming_bundle = dataForDisplay(table, context);
 
-        if (!incoming_bundle.getBoolean(context.getResources().getString(R.string.str_isFilled_utility))){
+        if (!incoming_bundle.getBoolean(context.getResources().getString(R.string.str_isFilled_utility))) {
             return false;
         }
-        updateViews_panelGroup(
-                linearLayout_panel.findViewById(R.id.group_of_panel_people),
-                context.getResources().getStringArray(R.array.panelGroup_people).length,
-                incoming_bundle,
-                context
-        );
-        updateViews_panelGroup(
-                linearLayout_panel.findViewById(R.id.group_of_panel_grain),
-                context.getResources().getStringArray(R.array.panelGroup_grain).length,
-                incoming_bundle,
-                context
-        );
-        updateViews_panelGroup(
-                linearLayout_panel.findViewById(R.id.group_of_panel_land),
-                context.getResources().getStringArray(R.array.panelGroup_land).length,
-                incoming_bundle,
-                context
-        );
-        updateViews_panelGroup(
-                linearLayout_panel.findViewById(R.id.group_of_panel_warriors),
-                context.getResources().getStringArray(R.array.panelGroup_warriors).length,
-                incoming_bundle,
-                context
-        );
-        updateViews_panelGroup(
-                linearLayout_panel.findViewById(R.id.group_of_panel_aggressor),
-                context.getResources().getStringArray(R.array.panelGroup_aggressor).length,
-                incoming_bundle,
-                context
-        );
+//        zeroing_updateViews_panelGroup(
+//                linearLayout_panel.findViewById(R.id.group_of_panel_people),
+//                context.getResources().getStringArray(R.array.panelGroup_people).length,
+//                incoming_bundle,
+//                context
+//        );
+//        zeroing_updateViews_panelGroup(
+//                linearLayout_panel.findViewById(R.id.group_of_panel_grain),
+//                context.getResources().getStringArray(R.array.panelGroup_grain).length,
+//                incoming_bundle,
+//                context
+//        );
+//        zeroing_updateViews_panelGroup(
+//                linearLayout_panel.findViewById(R.id.group_of_panel_land),
+//                context.getResources().getStringArray(R.array.panelGroup_land).length,
+//                incoming_bundle,
+//                context
+//        );
+//        zeroing_updateViews_panelGroup(
+//                linearLayout_panel.findViewById(R.id.group_of_panel_warriors),
+//                context.getResources().getStringArray(R.array.panelGroup_warriors).length,
+//                incoming_bundle,
+//                context
+//        );
+//        zeroing_updateViews_panelGroup(
+//                linearLayout_panel.findViewById(R.id.group_of_panel_aggressor),
+//                context.getResources().getStringArray(R.array.panelGroup_aggressor).length,
+//                incoming_bundle,
+//                context
+//        );
+        switch (numOfIssue) {
+            case 0: //Сколько купим земли?
+            case 1: //Сколько продадим земли?
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_grain),
+                        context.getResources().getStringArray(R.array.panelGroup_grain).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_land),
+                        context.getResources().getStringArray(R.array.panelGroup_land).length,
+                        incoming_bundle,
+                        context
+                );
+                break;
+            case 2: //Сколько человек определим в городовой полк?
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_people),
+                        context.getResources().getStringArray(R.array.panelGroup_people).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_grain),
+                        context.getResources().getStringArray(R.array.panelGroup_grain).length,
+                        incoming_bundle,
+                        context
+                );
+                break;
+            case 3: //Сколько зерна определим каждому горожанину для прокорма на год?
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_grain),
+                        context.getResources().getStringArray(R.array.panelGroup_grain).length,
+                        incoming_bundle,
+                        context
+                );
+                break;
+            case 4: //Сколько земли засеем?
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_grain),
+                        context.getResources().getStringArray(R.array.panelGroup_grain).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_people),
+                        context.getResources().getStringArray(R.array.panelGroup_people).length,
+                        incoming_bundle,
+                        context
+                );
+                break;
+            case 5: //Сколько пошлем в набег?
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_warriors),
+                        context.getResources().getStringArray(R.array.panelGroup_warriors).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_people),
+                        context.getResources().getStringArray(R.array.panelGroup_people).length,
+                        incoming_bundle,
+                        context
+                );
+                break;
+            default:
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_people),
+                        context.getResources().getStringArray(R.array.panelGroup_people).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_grain),
+                        context.getResources().getStringArray(R.array.panelGroup_grain).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_land),
+                        context.getResources().getStringArray(R.array.panelGroup_land).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_warriors),
+                        context.getResources().getStringArray(R.array.panelGroup_warriors).length,
+                        incoming_bundle,
+                        context
+                );
+                updateViews_panelGroup(
+                        linearLayout_panel.findViewById(R.id.group_of_panel_aggressor),
+                        context.getResources().getStringArray(R.array.panelGroup_aggressor).length,
+                        incoming_bundle,
+                        context
+                );
+                break;
+        }
         return true;
     }
 
-    private void updateViews_panelGroup(LinearLayout layoutPanelGroup, int countItemOf_panelGroup, Bundle incoming_bundle_fromBD, Context context){
+    private void zeroing_updateViews_panelGroup(LinearLayout layoutPanelGroup, int countItemOf_panelGroup, Bundle incoming_bundle_fromBD, Context context){
         for (int i=0;i<countItemOf_panelGroup;i++) {
+            ((TextView) ((LinearLayout) layoutPanelGroup.getChildAt(i)).getChildAt(1)).setText(
+                    R.string.___
+            );
+        }
+    }
+
+    private void updateViews_panelGroup(LinearLayout layoutPanelGroup, int countItemOf_panelGroup, Bundle incoming_bundle_fromBD, Context context) {
+        for (int i = 0; i < countItemOf_panelGroup; i++) {
             String nameItem_groupOfPanel = (String) (((TextView) ((LinearLayout) layoutPanelGroup.getChildAt(i)).getChildAt(0)).getText());
             String nameItem_inBD = getString_forDB(nameItem_groupOfPanel, context);
             int value = incoming_bundle_fromBD.getInt(nameItem_inBD);
+
             ((TextView) ((LinearLayout) layoutPanelGroup.getChildAt(i)).getChildAt(1)).setText(
-                    decimalFormat.format(value)
+                    "..."
+            );
+            TextView textView = ((TextView) ((LinearLayout) layoutPanelGroup.getChildAt(i)).getChildAt(1));
+            textView.postDelayed(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            textView.setText(
+                                    decimalFormat.format(value)
+                            );
+                        }
+                    },300
             );
         }
     }

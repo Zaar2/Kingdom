@@ -87,7 +87,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         //заполняем view from BD
         panelOfResources.updateView_Resources(this);
         panelOfIndicators.initViews_panel(this);
-        panelOfIndicators.updateView_Indicators(this);
+        panelOfIndicators.updateView_Indicators(-1, this);
 
         game();
     }
@@ -97,7 +97,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (!panelOfResources.updateView_Resources(this))
             return false;
         panelOfIndicators.initViews_panel(this);
-        if (!panelOfIndicators.updateView_Indicators(this))
+        if (!panelOfIndicators.updateView_Indicators(-1, this))
             return false;
 
         game();
@@ -116,8 +116,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         openFragment_toolActivity();
 
         panelOfResources.updateView_Resources(this);
-        panelOfIndicators.updateView_Indicators(this);
-
+        panelOfIndicators.updateView_Indicators(getNumberOfIssuesResolved()-1, this);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -206,6 +205,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             );
             view_activityGame.setVisibility(View.GONE);
             event.setVisibility(View.VISIBLE);
+        }else{
+            new Events(
+                    event,
+                    -1,
+                    this
+            );
         }
     }
 

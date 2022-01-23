@@ -10,7 +10,7 @@
     <string name="name_indicators_unemployed_person_11">Ничем не занятые люди, чел</string>
 
     <string name="name_indicators_grainReserve_6">Запасы зерна, пудов</string>
-    <string name="name_indicators_loss_14">Потери зерна при хранении, пуд</string>
+    <string name="name_indicators_loss_14">Потери зерна, пуд</string>
     <string name="name_indicators_productivity_5">Урожайность зерна, пуд/десятины</string>
 
     <string name="name_indicators_landInOwnership_4">Земли в собственности, десятин</string>
@@ -23,6 +23,7 @@
     <string name="name_indicators_distance_to_13">Расстояние до нападающих, верст</string>
 
     <string name="_______________">_______________</string>
+    <string name="___">___</string>
 
     <!-- degree of corruption -->
 

@@ -129,10 +129,16 @@ public class Events {
     }
 
     private void event_rats(Context context) {
+        int lossToRats = new EntryToCore().findCurrentlyValue_ofSpecifiedParameter(
+                context.getResources().getString(R.string.strDB_loss_grain_to_rats_accessory),
+                context.getResources().getString(R.string.strDB_accessory),
+                context,
+                1
+        );
         eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.rats);
-        eventInfo = "Нашествие крыс!";
+        eventInfo = "Нашествие крыс!\nМерзкие твари сожрали - " + lossToRats + " пуд.зерна.";
         specialEventInfo = "Собственные агенты докладывают, что данные сведения немного преувеличены." +
-                "\nВозможно все уже было украдено ранее.";
+                "\nВозможно, настоящие мерзкие твари, окопались немного в других местах.";
     }
 
     private void event_migratory(Context context) {
