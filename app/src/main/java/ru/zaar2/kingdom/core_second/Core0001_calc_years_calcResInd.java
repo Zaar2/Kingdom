@@ -98,18 +98,18 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         );
     }
 
-    private int calc_cropYields(int sign) {
-        int result;
-        result = (int) randomized.random(1, 8);
-        int a = (int) randomized.random(1, 30);
-        if (a >= 25 && sign > 0) {
-            result = 10;
-        }
-        if (a <= 5 && sign < 0) {
-            result = 1;
-        }
-        return result;
-    }
+//    private int calc_cropYields(int sign) {
+//        int result;
+//        result = (int) randomized.random(1, 8);
+//        int a = (int) randomized.random(1, 30);
+//        if (a >= 25 && sign > 0) {
+//            result = 10;
+//        }
+//        if (a <= 5 && sign < 0) {
+//            result = 1;
+//        }
+//        return result;
+//    }
 
     public void calc_indicator_migratory(Context context) {
         int population = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources));
@@ -133,7 +133,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
      * <p></p>
      */
     public void calc_event_0_fire_diversion(Context context, ArrayList<Integer> eventsList) {
-        if (randomized.random(15) == 2 && randomized.random(15) == 10) {
+        if (randomized.random(15) == 2 || randomized.random(15) == 10) {
             int dead, burnt_down;
             int population, grain, grainLoss, mortality;
 
@@ -165,16 +165,17 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
             );
 
             eventsList.add(R.string.event_fire);
-        } else {
-            calc_event_6_diversion(context, eventsList);
         }
     }
 
     /**
-     * <p></p>
+     * <p>Событие зависит от наличия лазутчиков в городе и соотношения армии к общему населению</p>
      */
     public void calc_event_6_diversion(Context context, ArrayList<Integer> eventsList) {
-        if (randomized.random(20) == 5 && randomized.random(15) == 10) {
+        if (
+                accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_accumulation_saboteur_accessory)) > 0 &&
+                        indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_army_indicator)) < resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 8
+        ) {
             int burnt_down, grain, grainLoss;
 
             grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
@@ -196,10 +197,44 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
     }
 
     /**
+     *<p></p>
+     */
+    public void calc_event_20_saboteur_makeHisWay(Context context, ArrayList<Integer> eventsList) {
+        if (
+                randomized.random() < 0.4 &&
+                        indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_army_indicator)) < resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 3
+        ) {
+            int saboteur = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_accumulation_saboteur_accessory));
+            saboteur++;
+            accessory_data_bundle.putInt(
+                    context.getResources().getString(R.string.strDB_accumulation_saboteur_accessory),
+                    saboteur
+            );
+            eventsList.add(R.string.event_saboteur_makeHisWay);
+        } else calc_event_21_saboteur_capture(context, eventsList);
+    }
+
+    public void calc_event_21_saboteur_capture(Context context, ArrayList<Integer> eventsList) {
+        if (
+                accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_accumulation_saboteur_accessory)) > 0 &&
+                        indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_army_indicator)) > resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 3 &&
+                        randomized.random() > 0.6
+        ) {
+            int saboteur = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_accumulation_saboteur_accessory));
+            saboteur--;
+            accessory_data_bundle.putInt(
+                    context.getResources().getString(R.string.strDB_accumulation_saboteur_accessory),
+                    saboteur
+            );
+            eventsList.add(R.string.event_saboteur_captured);
+        }
+    }
+
+    /**
      * <p></p>
      */
     public void calc_event_1_rats(Context context, ArrayList<Integer> eventsList) {
-        if (randomized.random(15) < 6) {
+        if (randomized.random(10) < 5) {
             int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
             int grainLoss = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_grainLoss_indicator));
             int grain_loss_to_rats = (int) (grain / (randomized.random(7, 15)));
@@ -239,9 +274,13 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
      */
     public void calc_event_3_rebellion(Context context, ArrayList<Integer> eventsList) {
         if (
-                accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_grain_per_citizen_accessory)) < 10
-                        || indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_mortality_indicator)) >
-                        (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) * 7)
+                ((
+                        accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_grain_per_citizen_accessory)) < 10
+                                || indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_mortality_indicator)) >
+                                (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) * 7)
+                ) && (
+                        randomized.random() < 0.6
+                ))||accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_grain_per_citizen_accessory)) < 5
         ) {
             int population = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources));
             int defenders = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_army_indicator));
@@ -271,7 +310,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
      * <p></p>t
      */
     public void calc_event_4_5_epidemic_demographic(Context context, ArrayList<Integer> eventsList) {
-        if (randomized.random(15) == 2 && randomized.random(15) == 10) {
+        if (randomized.random(15) <7 && randomized.random(15) > 10) {
             //epidemic
             int population = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources));
             int epidemic = (int) (randomized.random() * 50 + 5);
@@ -306,7 +345,12 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
      * <p></p>
      */
     public void calc_event_7_8_personCanHandle_increased_decline(Context context, ArrayList<Integer> eventsList) {
-        if (randomized.random(15) == 7 && randomized.random(15) == 12) {
+        if (
+                indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator)) <
+                        indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 20
+                &&
+                randomized.random() < 0.5
+        ) {
             //increased
             int canHandle = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
             canHandle += 5;
@@ -319,7 +363,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
             //decline
             if (
                     indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator)) >
-                            indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 3
+                            indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 2
             ) {
                 int canHandle = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
                 canHandle -= 5;
@@ -335,7 +379,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
 
     /**
      * <p>Расчет истощения земли или повышения урожайности.</p>
-     * <p>-Засев более 95% земли, вызывает истощение почвы.</p>
+     * <p>-Засев более 80% земли, вызывает истощение почвы.</p>
      * <p>-Засев менее половины земли, вызывает повышение урожайности.</p>
      */
     public void calc_event_9_10_cropYieldsImproved_landDepletion(Context context, ArrayList<Integer> eventsList) {
@@ -348,7 +392,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         if (
             //landDepletion
                 accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) >
-                        (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.95)
+                        (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.8)
         ) {
             if (cumulativeDepletion < 4) {
                 cumulativeDepletion++;
@@ -391,7 +435,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
      * <p></p>
      */
     public void calc_event_11_plunder(Context context, ArrayList<Integer> eventsList) {
-        if (randomized.random(15) > 12) {
+        if (randomized.random(15) > 13) {
             int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
             int stolen = (int) ((randomized.random() / 4 + 0.2) * grain);
             int grainLoss = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_grainLoss_indicator));

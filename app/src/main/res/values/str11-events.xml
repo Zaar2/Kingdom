@@ -20,5 +20,7 @@
     <string name="event_defeat_dueTo_starvation">17</string>
     <string name="event_defeat_in_raid">18</string>
     <string name="event_victory_in_raid">19</string>
+    <string name="event_saboteur_captured">20</string>
+    <string name="event_saboteur_makeHisWay">21</string>
 
 </resources>

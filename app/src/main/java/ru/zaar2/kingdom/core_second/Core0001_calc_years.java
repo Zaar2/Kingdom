@@ -49,7 +49,9 @@ public class Core0001_calc_years {
         //epidemic, demographic
         calcResInd.calc_event_4_5_epidemic_demographic(context, eventsList);
         //diversion
-//        calcResInd.calc_event_6_diversion(context, eventsList);
+        calcResInd.calc_event_6_diversion(context, eventsList);
+        //saboteur
+        calcResInd.calc_event_20_saboteur_makeHisWay(context,eventsList);
         //personCanHandle - increased, decline
         calcResInd.calc_event_7_8_personCanHandle_increased_decline(context, eventsList);
         //plunder

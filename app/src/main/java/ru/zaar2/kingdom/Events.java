@@ -95,6 +95,12 @@ public class Events {
             case R.string.event_victory_in_raid:
                 event_victory_in_raid(context);
                 break;
+            case R.string.event_saboteur_captured:
+                event_saboteur_captured(context);
+                break;
+            case R.string.event_saboteur_makeHisWay:
+                event_saboteur_makeHisWay(context);
+                break;
             default:
                 event_empty(context);
                 break;
@@ -189,14 +195,16 @@ public class Events {
         eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
         eventInfo = "Диверсия!!";
         specialEventInfo = "Вражеский лазутчик поджег склады с продовольствием" +
-                "Потеряно " + loss + " пуд.зерна.";
+                "Безвозвратно потеряно " + loss + " пуд.зерна.\n" +
+                "Публичная порка первых же попавших под руку мелких чинов, немного улучшила Ваше настроение\n" +
+                " и неплохо развлекла толпу.";
     }
 
     private void event_personCanHandle_increased(Context context) {
         eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
         eventInfo = "Увеличивается производительность Ваших подданных.";
         specialEventInfo = "Ваши длительные усилия по принуждению всех окружающих к труду, наконец-то принесли плоды." +
-                "\nТеперь ваши подданные могут засеять больше земли.";
+                "\nТеперь ваши подданные могут принести Вам еще больше пользы.";
     }
 
     private void event_personCanHandle_decline(Context context) {
@@ -209,7 +217,9 @@ public class Events {
     private void event_land_depletion(Context context) {
         eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
         eventInfo = "Интенсивное использование земель вызывает их истощение и снижает урожайность.";
-        specialEventInfo = "";
+        specialEventInfo = "Главного агронома на всякий случай надо бы посадить в клетку.\n" +
+                "Он конечно не причем, но ведь кто-то должен ответить за это безобразие.\n" +
+                "Ну не Вы же - в самом деле!";
     }
 
     private void event_improved_yields(Context context) {
@@ -293,7 +303,7 @@ public class Events {
         );
         eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
         eventInfo = "Набег окончился неудачей!";
-        specialEventInfo = "Погибло " + dead + " воинов.";
+        specialEventInfo = "В боях полегло " + dead + " воинов.";
     }
 
     private void event_victory_in_raid(Context context) {
@@ -342,5 +352,22 @@ public class Events {
                 "\nЗемли - " + captureLand + " десятин" +
                 "\nПленных - " + capturePeople + " человек" +
                 "\nИз " + warriors + " воинов, в сражениях погибло " + deadInRaid + ".";
+    }
+
+    private void event_saboteur_captured(Context context){
+        eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
+        eventInfo = "Вражеский лазутчик схвачен!";
+        specialEventInfo = "Ураа! Оджной сволочью меньше!\n" +
+                "Естессно бумага о наказании невиновных и награждении непричастных уже лежит перед Вами.\n" +
+                "Со знанием об истиных виновниках торжества и осознанием факта зависимости от окружающего Вас ничтожества - вы подписываете эту бумагу.";
+    }
+
+    private void event_saboteur_makeHisWay(Context context){
+        eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
+        eventInfo = "Доклад от собственной агентуры!\n" +
+                "Судя по косвенным данным, в город прибыл еще один вражеский лазутчик. \n" +
+                "И уже мутит воду среди несознательного элемента.\n";
+        specialEventInfo = "Работа по поимке негодяя ведется со всем возможным рвением.\n" +
+                "Но честно говоря - надежды мало.";
     }
 }
