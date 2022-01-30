@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.Calendar;
+
 import ru.zaar2.kingdom.core_second.EntryToCore;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -258,7 +260,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     private void gameOver() {
-        new EntryToCore().restartDB(this, 1);
+        EntryToCore entryToCore = new EntryToCore();
+
+        entryToCore.insertValue_recordTable(
+                entryToCore.findCurrentlyValue_ofSpecifiedParameter(
+                        this.getResources().getString(R.string.strDB_years_resources),
+                        this.getResources().getString(R.string.strDB_resources),
+                        this,
+                        1
+                ),
+                Calendar.getInstance().getTime(),
+                this,
+                1
+        );
+        entryToCore.restartDB(this, 1);
         finish();
     }
 

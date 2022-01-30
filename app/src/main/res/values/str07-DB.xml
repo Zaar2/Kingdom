@@ -8,6 +8,7 @@
     <string name="strDB_resources">resources</string>
     <string name="strDB_accessory">accessory</string>
     <string name="strDB_utility">utility</string>
+    <string name="strDB_record">record</string>
 
 <!--    ROWS_and_DEFAULT_VALUES_TABLE_accessory-->
 <!--    <string name="strDB_average_incomes_people_previously_accessory">average_incomes_people_previously</string>-->
@@ -58,6 +59,8 @@
     <!--    ROWS_and_DEFAULT_VALUES_TABLE_changeableParameters-->
 
     <!--    ROWS_and_DEFAULT_VALUES_TABLE_utility-->
-    <string name="str_isFilled_utility">isFilled_utility</string>
+    <string name="strDB_isFilled_utility">isFilled_utility</string>
+
+    <!--    ROWS_and_DEFAULT_VALUES_TABLE_record-->
 
 </resources>

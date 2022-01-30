@@ -3,6 +3,10 @@ package ru.zaar2.kingdom.core_second;
 import android.content.Context;
 import android.os.Bundle;
 
+import java.util.Date;
+
+import ru.zaar2.kingdom.core_second.Core005_DB.Core005_DB;
+
 public class EntryToCore {
 
     public EntryToCore() {
@@ -30,5 +34,9 @@ public class EntryToCore {
 
     public Bundle dataForDisplay(String table, Context context, int versionDB) {
         return new Core005_DB(context, versionDB).dataForDisplay(table);
+    }
+
+    public boolean insertValue_recordTable(int value, Date date, Context context, int versionDB){
+        return new Core005_DB(context, versionDB).insertValue_recordTable(value,date);
     }
 }

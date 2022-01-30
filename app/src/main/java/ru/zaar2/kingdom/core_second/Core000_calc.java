@@ -3,6 +3,8 @@ package ru.zaar2.kingdom.core_second;
 import android.content.Context;
 import android.os.Bundle;
 
+import ru.zaar2.kingdom.core_second.Core005_DB.Core005_DB;
+
 public class Core000_calc {
 
     public final Randomized randomized;

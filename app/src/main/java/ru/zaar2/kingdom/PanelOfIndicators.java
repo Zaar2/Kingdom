@@ -57,7 +57,7 @@ public class PanelOfIndicators extends Panel {
         String table = context.getResources().getString(R.string.strDB_indicators);
         Bundle incoming_bundle = dataForDisplay(table, context);
 
-        if (!incoming_bundle.getBoolean(context.getResources().getString(R.string.str_isFilled_utility))) {
+        if (!incoming_bundle.getBoolean(context.getResources().getString(R.string.strDB_isFilled_utility))) {
             return false;
         }
 //        zeroing_updateViews_panelGroup(
