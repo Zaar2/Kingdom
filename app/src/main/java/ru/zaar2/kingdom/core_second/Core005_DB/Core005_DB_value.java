@@ -144,5 +144,4 @@ public class Core005_DB_value {
                 {context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory), String.valueOf(StartingValue.def_CROP_YIELDS_CUMULATIVE_EFFECT_ACCESSORY)}
         };
     }
-
 }

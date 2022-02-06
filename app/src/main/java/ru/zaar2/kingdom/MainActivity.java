@@ -140,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void startGame(Intent intent_newGame) {
         startActivityForResult(intent_newGame, 1);
-//        startActivity(intent_newGame);
         showInterstitial();
     }
+
     private void btn_recordTable_onClick() {
         recordTable_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
                 flag_firstGame = false;
                 Intent intent_newGame = new Intent(getApplicationContext(), GameActivity.class);
                 intent_newGame.putExtra("new_game", 1);
-//                startActivity(intent_newGame);
                 startGame(intent_newGame);
             }
         });
@@ -219,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
     private void startMobileAds() {
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
             }
         });
     }
