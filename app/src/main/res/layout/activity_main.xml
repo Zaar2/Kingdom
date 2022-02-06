@@ -26,7 +26,6 @@
         android:visibility="visible"
         android:id="@+id/linearLay_rules"
         app:layout_constraintTop_toBottomOf="@+id/image_main"
-
         >
         <TextView
             android:id="@+id/rulesTitle_tv"
@@ -51,7 +50,6 @@
         android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@+id/linearLay_rules"
         >
-
         <Button
             android:id="@+id/btn_newGame"
             android:layout_width="wrap_content"
@@ -65,8 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_newGame"
             android:layout_centerHorizontal="true"
-            android:text="@string/btn_continueGame"
-            />
+            android:text="@string/btn_continueGame" />
 
         <Button
             android:id="@+id/btn_rulesGame"
@@ -79,6 +76,15 @@
             />
 
         <Button
+            android:id="@+id/btn_recordTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_continueGame"
+            android:layout_centerHorizontal="true"
+            android:text="@string/btn_RecordTable"
+            android:visibility="visible" />
+
+        <Button
             android:id="@+id/btn_setupGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +94,42 @@
             android:visibility="gone"
             />
     </RelativeLayout>
-
+    <LinearLayout
+        android:id="@+id/linearLay_achievements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/image_main"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+        <Button
+            android:id="@+id/btn_closeAchievements"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="@string/btn_back"
+            />
+        <Button
+            android:id="@+id/btn_clearAchievements"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_clear"
+            />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_recordTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/font_infoEvents"
+            app:layout_constraintTop_toBottomOf="@+id/relatLoy_main_menu"
+            />
+    </LinearLayout>
     <ScrollView
         android:id="@+id/scrlView_prompt"
         android:layout_width="match_parent"

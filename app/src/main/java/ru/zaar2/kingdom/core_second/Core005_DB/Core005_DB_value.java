@@ -1,14 +1,7 @@
 package ru.zaar2.kingdom.core_second.Core005_DB;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-
-import java.util.Objects;
 
 import ru.zaar2.kingdom.R;
 import ru.zaar2.kingdom.core_second.bcc.bcc004_initializingStartingValueDB;
@@ -151,4 +144,5 @@ public class Core005_DB_value {
                 {context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory), String.valueOf(StartingValue.def_CROP_YIELDS_CUMULATIVE_EFFECT_ACCESSORY)}
         };
     }
+
 }

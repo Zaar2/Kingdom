@@ -7,8 +7,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ru.zaar2.kingdom.core_second.EntryToCore;
-import ru.zaar2.kingdom.core_second.bcc.bcc001_value;
 
+import static ru.zaar2.kingdom.core_second.bcc.bcc001_value.GRAIN_FOR_SOWING;
+import static ru.zaar2.kingdom.core_second.bcc.bcc001_value.COST_PER_WARRIOR;
 
 public class PanelOfIndicators extends Panel {
 
@@ -301,7 +302,7 @@ public class PanelOfIndicators extends Panel {
                         1
                 );
                 int max_by_productivity = population * person_productivity;
-                int max_by_grain = (int) (grainReserve / bcc001_value.GRAIN_FOR_SOWING);
+                int max_by_grain = (int) (grainReserve / GRAIN_FOR_SOWING);
 
                 if (max_by_land < max_by_grain && max_by_land < max_by_productivity) {
                     result = max_by_land;
@@ -315,7 +316,7 @@ public class PanelOfIndicators extends Panel {
                 }
                 break;
             case 5: //набег
-                result = grainReserve / bcc001_value.COST_PER_WARRIOR;
+                result = grainReserve / COST_PER_WARRIOR;
 
                 population = entryToCore.findCurrentlyValue_ofSpecifiedParameter(
                         context.getResources().getString(R.string.strDB_unemployed_person_indicator),

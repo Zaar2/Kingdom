@@ -3,9 +3,9 @@ package ru.zaar2.kingdom.core_second;
 import android.content.Context;
 
 import ru.zaar2.kingdom.R;
-import ru.zaar2.kingdom.core_second.bcc.bcc001_value;
 
-import ru.zaar2.kingdom.core_second.bcc.bcc001_value;
+import static ru.zaar2.kingdom.core_second.bcc.bcc001_value.COST_PER_WARRIOR;
+import static ru.zaar2.kingdom.core_second.bcc.bcc001_value.GRAIN_FOR_SOWING;
 
 public class Core0002_calc_questions extends Core000_calc {
 
@@ -98,7 +98,7 @@ public class Core0002_calc_questions extends Core000_calc {
         boolean test;
         int army = 0;
 
-        if (value <= (grain / bcc001_value.COST_PER_WARRIOR)) test = true;
+        if (value <= (grain / COST_PER_WARRIOR)) test = true;
         else test = false;
         if (value <= population && value > 0) test = true;
         else test = false;
@@ -106,7 +106,7 @@ public class Core0002_calc_questions extends Core000_calc {
         if (test) {
             army += value;
             population -= army;
-            grain -= army * bcc001_value.COST_PER_WARRIOR;
+            grain -= army * COST_PER_WARRIOR;
 
             indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_army_indicator), army);
             indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator), population);
@@ -135,7 +135,7 @@ public class Core0002_calc_questions extends Core000_calc {
         personProductivity = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
 
         int appointmentPerson = value / personProductivity;
-        int decreaseGrain = (int) (value * bcc001_value.GRAIN_FOR_SOWING);
+        int decreaseGrain = (int) (value * GRAIN_FOR_SOWING);
 
         indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_grainReserve_indicator), grain - decreaseGrain);
         indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator), population - appointmentPerson);
@@ -150,7 +150,7 @@ public class Core0002_calc_questions extends Core000_calc {
                 year = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_years_resources));
         //test: population, grain, value
         if (population > 0 && grain > 0 && value > 0) {
-            if (value <= population && (value * bcc001_value.COST_PER_WARRIOR) < grain) {
+            if (value <= population && (value * COST_PER_WARRIOR) < grain) {
                 if (yearOfReturn <= 0) {
                     yearOfReturn = year + (int) randomized.random(1, 5);
                     startRaid = true;
@@ -158,7 +158,7 @@ public class Core0002_calc_questions extends Core000_calc {
                 //calc, upgDB
                 warriors += value;
                 population -= value;
-                grain -= value * bcc001_value.COST_PER_WARRIOR;
+                grain -= value * COST_PER_WARRIOR;
                 int population0 = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources));
                 population0 -= value;
                 indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_warriors_in_a_Raid_indicator), warriors);

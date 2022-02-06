@@ -7,6 +7,8 @@
     <string name="btn_continueGame">Продолжить</string>
     <string name="btn_setup">Настройка</string>
     <string name="btn_rules">Правила</string>
+    <string name="btn_RecordTable">Таблица рекордов</string>
+    <string name="btn_clear">Очистить!</string>
 
     <string name="rulesText">
         Ваша задача продержаться у власти как можно больше времени. Удача и разумный подход - помогут тебе.

@@ -1,6 +1,7 @@
 package ru.zaar2.kingdom;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -14,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Calendar;
 
+import ru.zaar2.kingdom.core_second.Core005_DB.Core005_DB_utility;
 import ru.zaar2.kingdom.core_second.EntryToCore;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -268,12 +270,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         this.getResources().getString(R.string.strDB_resources),
                         this,
                         1
-                ),
+                ) - 1,
                 Calendar.getInstance().getTime(),
                 this,
                 1
         );
         entryToCore.restartDB(this, 1);
+
+        Intent intent = new Intent();
+        intent.putExtra("result", 1);
+        setResult(RESULT_OK, intent);
         finish();
     }
 

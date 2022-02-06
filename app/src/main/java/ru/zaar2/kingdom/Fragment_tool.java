@@ -20,8 +20,9 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import ru.zaar2.kingdom.core_second.bcc.TextForToast_FragmentTool;
-import ru.zaar2.kingdom.core_second.bcc.bcc001_value;
 import ru.zaar2.kingdom.core_second.EntryToCore;
+
+import static ru.zaar2.kingdom.core_second.bcc.bcc001_value.FEEDING_PER_CITIZEN_NORMAL;
 
 public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
@@ -123,15 +124,15 @@ public class Fragment_tool extends Fragment implements SeekBar.OnSeekBarChangeLi
             case 2: //Сколько человек определим в городовой полк?
                 break;
             case 3: //Сколько зерна определим каждому горожанину для прокорма на год?
-                if (seekBar_frag.getProgress() < ((int) (bcc001_value.FEEDING_PER_CITIZEN_NORMAL / 8))) {
+                if (seekBar_frag.getProgress() < ((int) (FEEDING_PER_CITIZEN_NORMAL / 8))) {
                     textForToast = TextForToast_FragmentTool.headsman;
                     break;
                 }
-                if (seekBar_frag.getProgress() < ((int) (bcc001_value.FEEDING_PER_CITIZEN_NORMAL / 2))) {
+                if (seekBar_frag.getProgress() < ((int) (FEEDING_PER_CITIZEN_NORMAL / 2))) {
                     textForToast = TextForToast_FragmentTool.greedy;
                     break;
                 }
-                if (seekBar_frag.getProgress() > ((int) (bcc001_value.FEEDING_PER_CITIZEN_NORMAL * 2))) {
+                if (seekBar_frag.getProgress() > ((int) (FEEDING_PER_CITIZEN_NORMAL * 2))) {
                     textForToast = TextForToast_FragmentTool.benefactor;
                     break;
                 }
