@@ -22,5 +22,6 @@
     <string name="event_victory_in_raid">19</string>
     <string name="event_saboteur_captured">20</string>
     <string name="event_saboteur_makeHisWay">21</string>
+    <string name="event_natural_phenomena">22</string>
 
 </resources>

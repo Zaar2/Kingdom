@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ru.zaar2.kingdom.core_second.EntryToCore;
+import ru.zaar2.kingdom.core_second.Randomized;
 
 public class Events {
 
@@ -17,19 +18,18 @@ public class Events {
             specialEventInfo;
     private Bitmap eventImage;
 
-    public Events(LinearLayout event, int step, Context context) {
+    public Events(LinearLayout layout, int eventNow_ID, Context context) {
 
         eventInfo = "";
         specialEventInfo = "";
-//        calcEvent(step, context);
-        calcEvents(step, context);
-        viewEvent(event);
+        calcEvents(eventNow_ID, context);
+        viewEvent(layout);
     }
 
-    private void viewEvent(LinearLayout event) {
-        ((ImageView) event.findViewById(R.id.event_image)).setImageBitmap(eventImage);
-        ((TextView) event.findViewById(R.id.eventInfo_tv)).setText(eventInfo);
-        ((TextView) event.findViewById(R.id.eventSpecialInfo_tv)).setText(specialEventInfo);
+    private void viewEvent(LinearLayout layout) {
+        ((ImageView) layout.findViewById(R.id.event_image)).setImageBitmap(eventImage);
+        ((TextView) layout.findViewById(R.id.eventInfo_tv)).setText(eventInfo);
+        ((TextView) layout.findViewById(R.id.eventSpecialInfo_tv)).setText(specialEventInfo);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -100,6 +100,9 @@ public class Events {
                 break;
             case R.string.event_saboteur_makeHisWay:
                 event_saboteur_makeHisWay(context);
+                break;
+            case R.string.event_natural_phenomena:
+                event_natural_phenomena(context);
                 break;
             default:
                 event_empty(context);
@@ -369,5 +372,42 @@ public class Events {
                 "И уже мутит воду среди несознательного элемента.\n";
         specialEventInfo = "Работа по поимке негодяя ведется со всем возможным рвением.\n" +
                 "Но честно говоря - надежды мало.";
+    }
+
+    private void event_natural_phenomena(Context context) {
+        eventImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.events);
+        int grain_loss = new EntryToCore().findCurrentlyValue_ofSpecifiedParameter(
+                context.getResources().getString(R.string.strDB_loss_grain_dueTo_natural_phenomena_accessory),
+                context.getResources().getString(R.string.strDB_accessory),
+                context,
+                1
+        );
+        int a = (int) new Randomized().random(1, 6);
+        switch (a) {
+            case 1:
+                eventInfo = "Засуха и суховей погубили часть урожая!";
+                break;
+            case 2:
+                eventInfo = "Пустынная саранча погубила часть урожая!";
+                break;
+            case 3:
+                eventInfo = "Сильные ливневые дожди нанесли существенный ущерб урожаю!";
+                break;
+            case 4:
+                eventInfo = "Широкая полоса града прошла через все ваши поля. Ущерб значителен!";
+                break;
+            case 5:
+                eventInfo = "Заморозки существенно повредили посевам.";
+                break;
+            case 6:
+                eventInfo = "Резкое понижение температуры в сочетании с малоснежной зимой, привели к вымерзание посевов озимых.";
+                break;
+            default:
+                break;
+        }
+        specialEventInfo = "Народ предчувствуя нехорошее - волнуется.\n" +
+                "Толпа во главе с главным мракобесом требует наказать виновных.\n" +
+                "Пришлось организовать отлов и наказательные процедуры для некоторого колличества ведьм и колдунов.\n" +
+                "Ущерб однако от этого не уменьшился и составил - " + grain_loss + " пуд. зерна.";
     }
 }

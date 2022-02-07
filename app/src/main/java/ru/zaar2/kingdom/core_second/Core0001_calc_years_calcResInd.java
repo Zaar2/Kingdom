@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import ru.zaar2.kingdom.R;
+import ru.zaar2.kingdom.core_second.bcc.bcc001_value;
 
 public class Core0001_calc_years_calcResInd extends Core000_calc {
 
@@ -237,7 +238,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
         if (randomized.random(10) < 5) {
             int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
             int grainLoss = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_grainLoss_indicator));
-            int grain_loss_to_rats = (int) (grain / (randomized.random(7, 15)));
+            int grain_loss_to_rats = (int) (grain / (randomized.random(12, 17)));
             accessory_data_bundle.putInt(
                     context.getResources().getString(R.string.strDB_loss_grain_to_rats_accessory),
                     grain_loss_to_rats
@@ -248,6 +249,24 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                     grainLoss
             );
             eventsList.add(R.string.event_rats);
+        }
+    }
+
+    public void calc_event_22_natural_phenomena(Context context,ArrayList<Integer> eventsList) {
+        if (randomized.random(21) < 8) {
+            int grain = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_budget_resources));
+            int grainLoss = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_grainLoss_indicator));
+            int grain_loss_to_natural_phenomena = (int) (grain / (randomized.random(2, 5)));
+            accessory_data_bundle.putInt(
+                    context.getResources().getString(R.string.strDB_loss_grain_dueTo_natural_phenomena_accessory),
+                    grain_loss_to_natural_phenomena
+            );
+            grainLoss += grain_loss_to_natural_phenomena;
+            indicators_data_bundle.putInt(
+                    context.getResources().getString(R.string.strDB_grainLoss_indicator),
+                    grainLoss
+            );
+            eventsList.add(R.string.event_natural_phenomena);
         }
     }
 
@@ -349,11 +368,14 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                 indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator)) <
                         indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 20
                 &&
-                randomized.random() < 0.5
+                randomized.random() < 0.8
         ) {
             //increased
             int canHandle = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
-            canHandle += 5;
+            canHandle += 3;
+            if (canHandle > bcc001_value.MAX_PERSON_CAN_HANDLE) {
+                canHandle = bcc001_value.MAX_PERSON_CAN_HANDLE;
+            }
             indicators_data_bundle.putInt(
                     context.getResources().getString(R.string.strDB_personCanHandle_indicator),
                     canHandle
@@ -364,6 +386,8 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
             if (
                     indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator)) >
                             indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 2
+                            &&
+                            randomized.random() < 0.8
             ) {
                 int canHandle = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
                 canHandle -= 5;
@@ -394,9 +418,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                 accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) >
                         (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.8)
         ) {
-            if (cumulativeDepletion < 4) {
+            if (cumulativeDepletion < bcc001_value.MAX_CUMULATIVE_DEPLETION) {
                 cumulativeDepletion++;
-            } else cumulativeDepletion = 4;
+            } else cumulativeDepletion = bcc001_value.MAX_CUMULATIVE_DEPLETION;
             sign = -1;
             accessory_data_bundle.putInt(
                     context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),
@@ -407,7 +431,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
             //improved yields
             if (
                     accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) <=
-                            (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) / 2)
+                            (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.5)
             ) {
                 if (cumulativeDepletion > 0) {
                     cumulativeDepletion--;
@@ -423,6 +447,9 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
             cropYield += (int) (adding);
             if (cropYield <= 0) {
                 cropYield = 1;
+            }
+            if (cropYield > bcc001_value.MAX_CROP_YIELD) {
+                cropYield = bcc001_value.MAX_CROP_YIELD;
             }
         }
         indicators_data_bundle.putInt(
@@ -519,17 +546,19 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
             int
                     warriors = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_warriors_in_a_Raid_indicator)),
                     population = resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources));
-            if (warriors > population * 2) {
+            if (warriors > (population * 2)) {
                 raid_victory(context, eventsList);
                 return;
-            }
-            if (warriors < population / 2) {
-                raid_defeat(context, eventsList);
-                return;
-            }
-            if (randomized.random() > 0.5) {
-                raid_victory(context, eventsList);
-                return;
+            }else {
+                if (warriors < (population / 2)) {
+                    raid_defeat(context, eventsList);
+                    return;
+                }else {
+                    if (randomized.random() < 0.5) {
+                        raid_victory(context, eventsList);
+                        return;
+                    }
+                }
             }
             raid_defeat(context, eventsList);
         }
@@ -560,6 +589,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
 
 //        indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_warriors_in_a_Raid_indicator), 0);
         accessory_data_bundle.putInt(context.getResources().getString(R.string.strDB_raid_year_of_return_accessory), 0);
+        indicators_data_bundle.putInt(context.getResources().getString(R.string.strDB_warriors_in_a_Raid_indicator), 0);
 
         eventsList.add(R.string.event_victory_in_raid);
     }

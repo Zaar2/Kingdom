@@ -1,6 +1,7 @@
 package ru.zaar2.kingdom.core_second.Core005_DB;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -140,7 +141,13 @@ public class Core005_DB extends SQLiteOpenHelper {
      */
     public String[][] readFromRecordTable() {
         SQLiteDatabase database = this.getWritableDatabase();
-        String[][] inputTable= Core005_DB_utility.readFromRecordTable(database);
+
+        createTable(
+                database,
+                Core005_DB_value.NAME_TABLE_RECORD
+        );
+
+        String[][] inputTable = Core005_DB_utility.readFromRecordTable(database);
         database.close();
         return inputTable;
     }

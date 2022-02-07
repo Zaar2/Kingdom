@@ -1,5 +1,6 @@
 package ru.zaar2.kingdom.core_second.bcc;
 
+import ru.zaar2.kingdom.R;
 import ru.zaar2.kingdom.core_second.Randomized;
 
 public final class bcc004_initializingStartingValueDB {
@@ -39,6 +40,7 @@ public final class bcc004_initializingStartingValueDB {
     public final int def_PLUNDER_GRAIN = 0;
     public final int def_LOSS_GRAIN_IN_DIVERSION = 0;
     public final int def_LOSS_GRAIN_TO_RATS = 0;
+    public final int def_LOSS_GRAIN_DUE_TO_NATURAL_PHENOMENA = 0;
     public final int def_DEAD_IN_REBELLION = 0;
     public final int def_DEAD_IN_STARVATION = 0;
     public final int def_RAID_CAPTURE_LAND = 0;

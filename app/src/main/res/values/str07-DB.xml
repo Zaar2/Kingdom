@@ -11,7 +11,6 @@
     <string name="strDB_record">record</string>
 
 <!--    ROWS_and_DEFAULT_VALUES_TABLE_accessory-->
-<!--    <string name="strDB_average_incomes_people_previously_accessory">average_incomes_people_previously</string>-->
     <string name="strDB_currently_question_accessory">currently_question_accessory</string>
     <string name="strDB_sown_land_accessory">sown_land_accessory</string>
     <string name="strDB_accumulation_saboteur_accessory">accumulation_saboteur_accessory</string>
@@ -27,6 +26,7 @@
     <string name="strDB_plunder_grain_accessory">plunder_grain_accessory</string>
     <string name="strDB_loss_grain_in_diversion_accessory">loss_grain_in_diversion_accessory</string>
     <string name="strDB_loss_grain_to_rats_accessory">loss_grain_to_rats_accessory</string>
+    <string name="strDB_loss_grain_dueTo_natural_phenomena_accessory">loss_grain_dueTo_natural_phenomena_accessory</string>
     <string name="strDB_raid_capture_land_accessory">raid_capture_land_accessory</string>
     <string name="strDB_raid_capture_grain_accessory">raid_capture_grain_accessory</string>
     <string name="strDB_raid_capture_people_accessory">raid_capture_people_accessory</string>

@@ -201,6 +201,7 @@ public class Core005_DB_utility {
      * @return String[][] or null
      */
     protected static String[][] readFromRecordTable(SQLiteDatabase database) {
+
         Cursor cursor;
         String query;
         if (DatabaseUtils.queryNumEntries(database, Core005_DB_value.NAME_TABLE_RECORD) <= MAX_COUNT_RECORD_TABLE) {

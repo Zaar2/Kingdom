@@ -42,6 +42,8 @@ public class Core0001_calc_years {
         calcResInd.calc_event_0_fire_diversion(context, eventsList);
         //rats
         calcResInd.calc_event_1_rats(context, eventsList);
+        //natural_phenomenal
+        calcResInd.calc_event_22_natural_phenomena(context, eventsList);
         //migratory
         calcResInd.calc_event_2_migratory(context, eventsList);
         //rebellion
@@ -51,7 +53,7 @@ public class Core0001_calc_years {
         //diversion
         calcResInd.calc_event_6_diversion(context, eventsList);
         //saboteur
-        calcResInd.calc_event_20_saboteur_makeHisWay(context,eventsList);
+        calcResInd.calc_event_20_saboteur_makeHisWay(context, eventsList);
         //personCanHandle - increased, decline
         calcResInd.calc_event_7_8_personCanHandle_increased_decline(context, eventsList);
         //plunder

@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Calendar;
 
-import ru.zaar2.kingdom.core_second.Core005_DB.Core005_DB_utility;
 import ru.zaar2.kingdom.core_second.EntryToCore;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,9 +24,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Fragment_tool fragment_tool;
 
     private ScrollView view_activityGame;
-    private LinearLayout event;
-    private int[] eventsList;
-    private int step, maxSteps;
+
+    private LinearLayout event_layout;
+    private int[] eventsIDList;
+    private int eventsID, totalCountEvents;
     private boolean endGame;
 
     private final Handler gameOver_handler = new Handler();
@@ -43,7 +43,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         initClass();
         initView();
 
-        event.setOnClickListener(this);
+        event_layout.setOnClickListener(this);
 
         initData();
     }
@@ -65,7 +65,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         );
         panelOfIndicators.setVisibility(panel_ready);
         view_activityGame = (ScrollView) findViewById(R.id.scrollView_activityGame_parent);
-        event = (LinearLayout) findViewById(R.id.event_linLayout);
+        event_layout = (LinearLayout) findViewById(R.id.event_linLayout);
 //        event.setVisibility(View.GONE);
     }
 
@@ -197,21 +197,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void calcDB_forYear() {
-        eventsList = new EntryToCore().calcDB_forYear(this);
-        if (eventsList.length > 0) {
-            step = 0;
-            maxSteps = eventsList.length;
+        eventsIDList = new EntryToCore().calcDB_forYear(this);
+        if (eventsIDList.length > 0) {
+            eventsID = 0;
+            totalCountEvents = eventsIDList.length;
 
             new Events(
-                    event,
-                    eventsList[step],
+                    event_layout,
+                    eventsIDList[eventsID],
                     this
             );
             view_activityGame.setVisibility(View.GONE);
-            event.setVisibility(View.VISIBLE);
+            event_layout.setVisibility(View.VISIBLE);
         }else{
             new Events(
-                    event,
+                    event_layout,
                     -1,
                     this
             );
@@ -221,21 +221,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (
-                eventsList[step] == R.string.event_defeat_dueTo_hunger
-                        || eventsList[step] == R.string.event_defeat_dueTo_rebellion
-                        || eventsList[step] == R.string.event_defeat_in_war
+                eventsIDList[eventsID] == R.string.event_defeat_dueTo_hunger
+                        || eventsIDList[eventsID] == R.string.event_defeat_dueTo_rebellion
+                        || eventsIDList[eventsID] == R.string.event_defeat_in_war
         ) {
             endGame = true;
         } else {
-            step++;
-            if (step < maxSteps) {
+            eventsID++;
+            if (eventsID < totalCountEvents) {
                 new Events(
-                        event,
-                        eventsList[step],
+                        event_layout,
+                        eventsIDList[eventsID],
                         this
                 );
             } else {
-                event.setVisibility(View.GONE);
+                event_layout.setVisibility(View.GONE);
                 view_activityGame.setVisibility(View.VISIBLE);
             }
         }
