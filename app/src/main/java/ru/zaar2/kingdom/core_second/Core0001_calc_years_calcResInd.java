@@ -266,6 +266,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                     context.getResources().getString(R.string.strDB_grainLoss_indicator),
                     grainLoss
             );
+            addCumulativeDepletion(context);
             eventsList.add(R.string.event_natural_phenomena);
         }
     }
@@ -368,7 +369,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                 indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator)) <
                         indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 20
                 &&
-                randomized.random() < 0.8
+                randomized.random() < 0.9
         ) {
             //increased
             int canHandle = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
@@ -387,7 +388,7 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                     indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_unemployed_person_indicator)) >
                             indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_population_resources)) / 2
                             &&
-                            randomized.random() < 0.8
+                            randomized.random() < 0.9
             ) {
                 int canHandle = indicators_data_bundle.getInt(context.getResources().getString(R.string.strDB_personCanHandle_indicator));
                 canHandle -= 5;
@@ -412,20 +413,13 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                 context.getResources().getString(R.string.strDB_cropYields_indicator)
         );
         int sign = 0;
-        int cumulativeDepletion = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory));
         if (
             //landDepletion
                 accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) >
                         (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.8)
         ) {
-            if (cumulativeDepletion < bcc001_value.MAX_CUMULATIVE_DEPLETION) {
-                cumulativeDepletion++;
-            } else cumulativeDepletion = bcc001_value.MAX_CUMULATIVE_DEPLETION;
+            addCumulativeDepletion(context);
             sign = -1;
-            accessory_data_bundle.putInt(
-                    context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),
-                    cumulativeDepletion
-            );
             eventsList.add(R.string.event_land_depletion);
         } else {
             //improved yields
@@ -433,13 +427,12 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                     accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_sown_land_accessory)) <=
                             (resources_data_bundle.getInt(context.getResources().getString(R.string.strDB_acreage_resources)) * 0.5)
             ) {
-                if (cumulativeDepletion > 0) {
-                    cumulativeDepletion--;
-                } else cumulativeDepletion = 0;
+                decreaseCumulativeDepletion(context);
                 sign = 1;
                 eventsList.add(R.string.event_improved_yields);
             }
         }
+        int cumulativeDepletion = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory));
         if (sign != 0)
             adding += ((int) (randomized.random(1, (int) (cropYield / 2))) * sign);
         if (sign < 0) adding += cumulativeDepletion;
@@ -682,6 +675,28 @@ public class Core0001_calc_years_calcResInd extends Core000_calc {
                     aggressor
             );
         }
+    }
+
+    private void addCumulativeDepletion(Context context) {
+        int cumulativeDepletion = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory));
+        if (cumulativeDepletion < bcc001_value.MAX_CUMULATIVE_DEPLETION) {
+            cumulativeDepletion++;
+        } else cumulativeDepletion = bcc001_value.MAX_CUMULATIVE_DEPLETION;
+        accessory_data_bundle.putInt(
+                context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),
+                cumulativeDepletion
+        );
+    }
+
+    private void decreaseCumulativeDepletion(Context context) {
+        int cumulativeDepletion = accessory_data_bundle.getInt(context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory));
+        if (cumulativeDepletion > 0) {
+            cumulativeDepletion--;
+        } else cumulativeDepletion = 0;
+        accessory_data_bundle.putInt(
+                context.getResources().getString(R.string.strDB_cropYields_cumulativeEffectDepletion_accessory),
+                cumulativeDepletion
+        );
     }
 
     public void postCalc_resources_grain_budget(Context context) {

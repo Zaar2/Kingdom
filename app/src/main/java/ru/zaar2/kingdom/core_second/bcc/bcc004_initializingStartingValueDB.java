@@ -18,7 +18,7 @@ public final class bcc004_initializingStartingValueDB {
     public final int def_GRAIN_RESERVE = def_BUDGET_RESOURCES;
     public final int def_CROP_YIELDS = calc_cropYields(0);
     public final int def_LAND_VALUE = (int) (10 + randomized.random(20));
-    public final int def_PERSON_CAN_HANDLE = 14;
+    public final int def_PERSON_CAN_HANDLE = 5;
     public final int def_ARMY_RESOURCES = 0;
     public final int def_STR_WARRIORS_IN_A_RAID = 0;
     public final int def_UNEMPLOYED_PERSON = def_POPULATION_RESOURCES;
@@ -53,10 +53,10 @@ public final class bcc004_initializingStartingValueDB {
 
     private int calc_cropYields(int sign) {
         int result;
-        result = (int) randomized.random(1, 8);
+        result = (int) randomized.random(1, 5);
         int a = (int) randomized.random(1, 30);
         if (a >= 25) {
-            result = 10;
+            result = 7;
         }
         if (a <= 5) {
             result = 1;

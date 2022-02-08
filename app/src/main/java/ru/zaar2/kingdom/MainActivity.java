@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(
                 this,
-                "ca-app-pub-3940256099942544/1033173712",
+                "ca-app-pub-5332509952948840/5604515043",
                 adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
