@@ -228,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
         InterstitialAd.load(
                 this,
                 "ca-app-pub-3940256099942544/1033173712", //id тестового рекламного блока
-                //"ca-app-pub-5332509952948840/5604515043", //id рабочего рекламного блока
                 adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
